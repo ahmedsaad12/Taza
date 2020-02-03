@@ -20,4 +20,8 @@
     <string name="shop_name">shop Name</string>
     <string name="nationel_id">Nationel Id</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="my_information">My InFormation</string>
+    <string name="orders">Orders</string>
+    <string name="notifications">Notifications</string>
+    <string name="no_product_to_display">No Product to Display</string>
 </resources>
