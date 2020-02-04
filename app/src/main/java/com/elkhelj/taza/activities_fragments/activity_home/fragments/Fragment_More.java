@@ -16,10 +16,14 @@ import androidx.fragment.app.Fragment;
 
 
 import com.elkhelj.taza.R;
+import com.elkhelj.taza.activities_fragments.activity_about.AboutActivity;
+import com.elkhelj.taza.activities_fragments.activity_contact.ContactActivity;
 import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
+import com.elkhelj.taza.activities_fragments.activity_terms.TermsActivity;
 import com.elkhelj.taza.databinding.FragmentMoreBinding;
 import com.elkhelj.taza.models.UserModel;
 import com.elkhelj.taza.preferences.Preferences;
+import com.elkhelj.taza.share.Common;
 import com.elkhelj.taza.tags.Tags;
 import com.squareup.picasso.Picasso;
 
@@ -54,38 +58,43 @@ public class Fragment_More extends Fragment {
         Paper.init(activity);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         userModel = preferences.getUserData(activity);
-//        if (userModel != null) {
-//            // Picasso.with(activity).load(Tags.IMAGE_user_URL + userModel.getUser().getAvatar()).placeholder(R.drawable.user_profile).fit().into(binding.image);
-//            // binding.tvName.setText(userModel.getUser().getName());
-//        }
-//        if(userModel==null){
-//            // binding.tvLogout.setText(activity.getResources().getString(R.string.login));
-//        }
 //
-//        binding.llterms.setOnClickListener(view -> {
-//            Intent intent = new Intent(activity, TermsActivity.class);
-//            startActivity(intent);
-//        });
-//
-//        binding.llabout.setOnClickListener(view -> {
-//            Intent intent = new Intent(activity, AboutActivity.class);
-//            startActivity(intent);
-//        });
-//
-//
-//        binding.llContact.setOnClickListener(view -> {
-//            Intent intent = new Intent(activity, ContactActivity.class);
-//            startActivity(intent);
-//        });
-//
-//        binding.lllgout.setOnClickListener(view -> {
-//            if (userModel != null) {
-//
-//                activity.logout();
-//            } else {
-//                Common.CreateNoSignAlertDialog(activity);
-//            }
-//        });
+        binding.llterms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, TermsActivity.class);
+              startActivity(intent);
+            }
+        });
+
+        binding.llabout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, AboutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        binding.llContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, ContactActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.lllgout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (userModel != null) {
+
+                    activity.logout();
+                } else {
+                    // Common.CreateNoSignAlertDialog(activity);
+                }
+            }
+        });
 
 
     }

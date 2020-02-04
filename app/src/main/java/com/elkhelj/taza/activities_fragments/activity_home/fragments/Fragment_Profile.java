@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 
 import com.elkhelj.taza.R;
 import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
+import com.elkhelj.taza.activities_fragments.activity_my_orders.MyOrdersActivity;
+import com.elkhelj.taza.activities_fragments.activity_notification.NotificationActivity;
 import com.elkhelj.taza.databinding.FragmentProfileBinding;
 import com.elkhelj.taza.models.UserModel;
 import com.elkhelj.taza.preferences.Preferences;
@@ -68,13 +70,13 @@ public class Fragment_Profile extends Fragment {
 //                startActivity(intent);
 //            }
 //        });
-//        binding.llnotif.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(activity, NotificationActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        binding.llnotif.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, NotificationActivity.class);
+                startActivity(intent);
+            }
+        });
 //        binding.lllang.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -95,13 +97,13 @@ public class Fragment_Profile extends Fragment {
 //                startActivity(intent);
 //            }
 //        });
-//        binding.llorder.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(activity, MyOrdersActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        binding.llorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, MyOrdersActivity.class);
+                startActivity(intent);
+            }
+        });
 //        binding.llpage.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

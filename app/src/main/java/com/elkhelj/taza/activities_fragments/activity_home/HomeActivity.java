@@ -36,7 +36,9 @@ import com.elkhelj.taza.databinding.ActivityHomeBinding;
 import com.elkhelj.taza.language.LanguageHelper;
 import com.elkhelj.taza.models.UserModel;
 import com.elkhelj.taza.preferences.Preferences;
+import com.elkhelj.taza.remote.Api;
 import com.elkhelj.taza.share.Common;
+import com.elkhelj.taza.tags.Tags;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -336,7 +338,7 @@ private UserModel userModel;
         if (userModel == null) {
             NavigateToSignInActivity();
         } else {
-            //Logout();
+            Logout();
         }
     }
 
@@ -360,41 +362,41 @@ private UserModel userModel;
 
     }
 
-//    public void Logout() {
-//        final ProgressDialog dialog = Common.createProgressDialog(this, getString(R.string.wait));
-//
-//        dialog.show();
-//        Api.getService(Tags.base_url)
-//                .Logout(userModel.getUser().getId() + "")
-//                .enqueue(new Callback<ResponseBody>() {
-//                    @Override
-//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                        dialog.dismiss();
-//                        if (response.isSuccessful()) {
-//                            /*new Handler()
-//                                    .postDelayed(new Runnable() {
-//                                        @Override
-//                                        public void run() {
-//                                            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//                                            manager.cancelAll();
-//                                        }
-//                                    },1);
-//                            userSingleTone.clear(ClientHomeActivity.this);*/
-//                            preferences.create_update_userdata(HomeActivity.this, null);
-//                            preferences.create_update_session(HomeActivity.this, Tags.session_logout);
-//                            Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
-//                            startActivity(intent);
-//                            finish();
-//
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-//
-//                    }
-//                });
-//    }
+    public void Logout() {
+        final ProgressDialog dialog = Common.createProgressDialog(this, getString(R.string.wait));
+
+        dialog.show();
+        Api.getService(Tags.base_url)
+                .Logout( "")
+                .enqueue(new Callback<ResponseBody>() {
+                    @Override
+                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                        dialog.dismiss();
+                        if (response.isSuccessful()) {
+                            /*new Handler()
+                                    .postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                                            manager.cancelAll();
+                                        }
+                                    },1);
+                            userSingleTone.clear(ClientHomeActivity.this);*/
+                            preferences.create_update_userdata(HomeActivity.this, null);
+                            preferences.create_update_session(HomeActivity.this, Tags.session_logout);
+                            Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
+                            startActivity(intent);
+                            finish();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+                    }
+                });
+    }
 
 
 

@@ -1,16 +1,12 @@
 package com.elkhelj.taza.activities_fragments.activity_home.fragments;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,20 +14,21 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.elkhelj.taza.R;
 import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
+import com.elkhelj.taza.adapters.Catogry_Adapter;
 import com.elkhelj.taza.databinding.FragmentMainBinding;
+import com.elkhelj.taza.models.Catogries_Model;
+import com.elkhelj.taza.models.List<Catogries_Model>;
 import com.elkhelj.taza.models.UserModel;
 import com.elkhelj.taza.preferences.Preferences;
+import com.elkhelj.taza.remote.Api;
+import com.elkhelj.taza.tags.Tags;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import io.paperdb.Paper;
 import retrofit2.Call;
@@ -46,8 +43,8 @@ public class Fragment_Main extends Fragment {
     private Preferences preferences;
     private UserModel userModel;
 //
-//    private List<Catogries_Model.Data> dataList;
-//    private Category_Adapter catogries_adapter;
+    private List<Catogries_Model> dataList;
+    private Catogry_Adapter catogries_adapter;
 //    private Ads_Adapter ads_adapter;
 //    private List<Adversiment_Model.Data> advesriment_data_list;
 
@@ -60,7 +57,7 @@ public class Fragment_Main extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false);
         initView();
 
-        //getDepartments();
+        getDepartments();
 
       //  getAds();
 
@@ -85,12 +82,12 @@ public class Fragment_Main extends Fragment {
         manager2 = new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
         binding.recView.setLayoutManager(manager);
         binding.recViewCategory.setLayoutManager(manager2);
-//        catogries_adapter = new Category_Adapter(dataList, activity, this);
+        catogries_adapter = new Catogry_Adapter(dataList, activity, this);
         binding.recViewCategory.setItemViewCacheSize(25);
         binding.recViewCategory.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         binding.recViewCategory.setDrawingCacheEnabled(true);
 
-//        binding.recViewCategory.setAdapter(catogries_adapter);
+       binding.recViewCategory.setAdapter(catogries_adapter);
 //        ads_adapter = new Ads_Adapter(advesriment_data_list, activity);
         binding.recView.setItemViewCacheSize(25);
         binding.recView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
@@ -175,18 +172,17 @@ public class Fragment_Main extends Fragment {
 //
 //
 //
-//    public void getDepartments() {
+    public void getDepartments() {
 //        Api.getService(Tags.base_url)
 //                .getDepartment()
-//                .enqueue(new Callback<Catogries_Model>() {
+//                .enqueue(new Callback<List<Catogries_Model>>() {
 //                    @Override
-//                    public void onResponse(Call<Catogries_Model> call, Response<Catogries_Model> response) {
+//                    public void onResponse(Call<List<Catogries_Model>> call, Response<List<Catogries_Model>> response) {
 //                        //   progBar.setVisibility(View.GONE);
-//                        if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
-//                            dataList.add(new Catogries_Model.Data("all", "الكل"));
+//                        if (response.isSuccessful() && response.body() != null ) {
 //
-//                            dataList.addAll(response.body().getData());
-//                            if (response.body().getData().size() > 0) {
+//                            dataList.addAll(response.body());
+//                            if (response.body().size() > 0) {
 //                                // rec_sent.setVisibility(View.VISIBLE);
 //
 //                                //   ll_no_order.setVisibility(View.GONE);
@@ -199,7 +195,7 @@ public class Fragment_Main extends Fragment {
 //                            }
 //                        } else {
 //
-//                            Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+//                       //     Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
 //                            try {
 //                                Log.e("Error_code", response.code() + "_" + response.errorBody().string());
 //                            } catch (IOException e) {
@@ -209,7 +205,7 @@ public class Fragment_Main extends Fragment {
 //                    }
 //
 //                    @Override
-//                    public void onFailure(Call<Catogries_Model> call, Throwable t) {
+//                    public void onFailure(Call<List<Catogries_Model>> call, Throwable t) {
 //                        try {
 //
 //
@@ -219,8 +215,8 @@ public class Fragment_Main extends Fragment {
 //                        }
 //                    }
 //                });
-//
-//    }
+
+    }
 
 
 

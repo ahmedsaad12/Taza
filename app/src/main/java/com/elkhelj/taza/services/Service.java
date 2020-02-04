@@ -1,5 +1,8 @@
 package com.elkhelj.taza.services;
 
+import com.elkhelj.taza.models.App_Data_Model;
+import com.elkhelj.taza.models.NotificationDataModel;
+import com.elkhelj.taza.models.Order_Model;
 import com.elkhelj.taza.models.UserModel;
 
 import java.util.List;
@@ -38,6 +41,35 @@ public interface Service {
                            @Field("shop_for") String shop_for,
                            @Field("country") String country,
                            @Field("city") String city
+
+    );
+    @FormUrlEncoded
+    @POST("api/contact_us")
+    Call<ResponseBody> sendContact(@Field("name") String name,
+                                   @Field("email") String email,
+                                   @Field("subject") String subject,
+                                   @Field("message") String message
+    );
+    @FormUrlEncoded
+    @POST("api/logout")
+    Call<ResponseBody> Logout(@Field("id") String id
+
+    );
+    @GET("api/condtions")
+    Call<App_Data_Model> getterms();
+
+    @GET("api/aboutUs")
+    Call<App_Data_Model> getabout();
+    @FormUrlEncoded
+    @POST("api/my_notification")
+    Call<List<NotificationDataModel>> getNotifications(@Field("user_id") int user_id
+    );
+    @FormUrlEncoded
+    @POST("api/my_orders")
+    Call<List<Order_Model>> getMyAds(
+            @Field("user_id") String user_id,
+            @Field("type") String type
+
 
     );
 

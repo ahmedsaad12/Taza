@@ -24,4 +24,14 @@
     <string name="orders">Orders</string>
     <string name="notifications">Notifications</string>
     <string name="no_product_to_display">No Product to Display</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="terms_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="about_us">About Us</string>
+    <string name="log_out">Log Out</string>
+    <string name="wait">Wait...</string>
+    <string name="my_orders">My Orders</string>
+    <string name="no_order_to_display">No Order to Display</string>
+    <string name="no_notification_found">No Notification Found</string>
+    <string name="from">From :</string>
+
 </resources>

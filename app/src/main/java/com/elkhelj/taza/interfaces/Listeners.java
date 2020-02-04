@@ -1,6 +1,7 @@
 package com.elkhelj.taza.interfaces;
 
 
+import com.elkhelj.taza.models.ContactUsModel;
 
 public interface Listeners {
 
@@ -63,6 +64,9 @@ public interface Listeners {
         void updateProfile();
     }
 
-
+    interface ContactListener
+    {
+        void sendContact(ContactUsModel contactUsModel);
+    }
 
 }
