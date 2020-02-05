@@ -67,8 +67,8 @@
 
     <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
+            android:layout_height="0dp"
+android:layout_weight="1"
 
             >
             <LinearLayout
@@ -93,17 +93,12 @@
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:text="@string/no_ads_to_display"
+                    android:text="@string/no_product_to_display"
                     />
 
             </LinearLayout>
 
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/swipeRefresh"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
 
-                >
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recView"
                     android:layout_width="match_parent"
@@ -112,7 +107,6 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
 
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
             <ProgressBar
                 android:id="@+id/progBar"
@@ -137,7 +131,7 @@
                     android:layout_marginTop="5dp"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:text="@string/no_ads_to_display"
+                    android:text="@string/no_product_to_display"
                     />
             </LinearLayout>
 

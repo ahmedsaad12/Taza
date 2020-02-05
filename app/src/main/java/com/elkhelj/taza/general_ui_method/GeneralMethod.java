@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
-import com.elkhelj.ecommerece.R;
-import com.elkhelj.ecommerece.tags.Tags;
+import com.elkhelj.taza.R;
+import com.elkhelj.taza.tags.Tags;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
@@ -79,7 +79,7 @@ public class GeneralMethod {
         SimpleDateFormat dateFormat = new SimpleDateFormat("EEE dd/MMM", Locale.ENGLISH);
         String m_date = dateFormat.format(new Date(date*1000));
 
-        textView.setText(R.string.date+String.format("%s",m_date));
+     //   textView.setText(R.string.date+String.format("%s",m_date));
 
     }
     @BindingAdapter({"time"})

@@ -2,51 +2,53 @@ package com.elkhelj.taza.models;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Patterns;
+import android.widget.Toast;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.ObservableField;
 
-import com.elkhelj.ecommerece.BR;
-import com.elkhelj.ecommerece.R;
+import com.elkhelj.taza.BR;
+import com.elkhelj.taza.R;
 
 
 public class LoginModel extends BaseObservable {
 
-    private String phone;
+
+    private String email;
     private String password;
-    public ObservableField<String> error_phone = new ObservableField<>();
+
+
+
+    public ObservableField<String> error_email = new ObservableField<>();
+
     public ObservableField<String> error_password = new ObservableField<>();
 
 
     public LoginModel() {
-        this.phone="";
-        this.password="";
+
+        this.password = "";
+        this.email = "";
     }
 
-    public LoginModel( String phone, String password) {
-        this.phone = phone;
-        notifyPropertyChanged(BR.phone);
-        this.password = password;
-        notifyPropertyChanged(BR.password);
-
-
-    }
 
 
 
     @Bindable
-    public String getPhone() {
-        return phone;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-        notifyPropertyChanged(BR.phone);
+    public void setEmail(String email) {
+        this.email = email;
+        notifyPropertyChanged(BR.email);
+
 
     }
 
     @Bindable
+
     public String getPassword() {
         return password;
     }
@@ -57,43 +59,44 @@ public class LoginModel extends BaseObservable {
 
     }
 
-    public boolean isDataValid(Context context)
-    {
+
+
+    public boolean isDataValid(Context context) {
         if (
-                !TextUtils.isEmpty(phone)&&
-                password.length()>=6
-        )
-        {
-            error_phone.set(null);
+                (password.length() >= 6) &&
+                ((!TextUtils.isEmpty(email) &&
+                        Patterns.EMAIL_ADDRESS.matcher(email).matches()) ||! TextUtils.isEmpty(email))
+        ) {
+
+            error_email.set(null);
             error_password.set(null);
-
-return true;
-        }else
-            {
+            return true;
+        } else {
 
 
-                if (phone.isEmpty())
-                {
-                    error_phone.set(context.getString(R.string.field_req));
-                }else
-                {
-                    error_phone.set(null);
-                }
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                error_email.set(context.getString(R.string.inve));
+            } else {
+                error_email.set(null);
 
-                if (password.isEmpty())
-                {
-                    error_password.set(context.getString(R.string.field_req));
-                }else if (password.length()<6)
-                {
-                    error_password.set(context.getString(R.string.pass_short));
-                }else
-                    {
-                        error_password.set(null);
-
-                    }
-                return false;
             }
+
+
+
+
+
+            if (password.isEmpty()) {
+                error_password.set(context.getString(R.string.field_req));
+            } else if (password.length() < 6) {
+                error_password.set(context.getString(R.string.pass_short));
+            }  else {
+                error_password.set(null);
+
+            }
+
+
+
+            return false;
+        }
     }
-
-
 }

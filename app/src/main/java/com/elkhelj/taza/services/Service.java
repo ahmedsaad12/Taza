@@ -1,8 +1,11 @@
 package com.elkhelj.taza.services;
 
 import com.elkhelj.taza.models.App_Data_Model;
+import com.elkhelj.taza.models.Catogries_Model;
+import com.elkhelj.taza.models.Cities_Model;
 import com.elkhelj.taza.models.NotificationDataModel;
 import com.elkhelj.taza.models.Order_Model;
+import com.elkhelj.taza.models.Product_Model;
 import com.elkhelj.taza.models.UserModel;
 
 import java.util.List;
@@ -72,6 +75,33 @@ public interface Service {
 
 
     );
+    @GET("api/mainCategories")
+    Call<List<Catogries_Model>> getDepartment(
 
-   
+
+    );
+    @GET("api/all_products")
+        Call<List<Product_Model>> getAds(
+
+
+    );
+    @GET("api/all_Subscription")
+    Call<List<Product_Model>> getSubscribe(
+
+
+    );
+    @GET("api/add_subscribs")
+    Call<ResponseBody> setSubscribe(
+            @Field("user_id") String user_id,
+            @Field("product_id") String product_id
+
+    );
+    @FormUrlEncoded
+    @POST("api/search")
+    Call<List<Product_Model>> getAds(
+@Field("key_word")String key_word
+
+    );
+    @GET("api/ALl-Cities")
+    Call<List<Cities_Model>> getAllCities();
 }

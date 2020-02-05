@@ -13,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.elkhelj.taza.R;
+import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
 import com.elkhelj.taza.activities_fragments.activity_sign_in.activities.SignInActivity;
 import com.elkhelj.taza.databinding.FragmentSignInBinding;
 import com.elkhelj.taza.interfaces.Listeners;
@@ -71,99 +72,96 @@ public class Fragment_Sign_In extends Fragment implements Listeners.LoginListene
 
 
     @Override
-    public void checkDataLogin( String phone, String password) {
+    public void checkDataLogin( String email, String password) {
 
 
-       if (loginModel.isDataValid(activity))
-        {  phone=     String.format(Locale.ENGLISH, "%d", Integer.parseInt(phone));
+       if (loginModel.isDataValid(activity)){
 
-            if (phone.startsWith("0")) {
-                phone = phone.replaceFirst("0", "");
-            }
-            loginModel = new LoginModel(phone,password);
+            loginModel.setEmail(email);
+       loginModel.setPassword(password);
             binding.setLoginModel(loginModel);
 
-            login(phone,password);
+            login(email,password);
         }
       //  navigateToHomeActivity();
     }
 
-    private void login( String phone, String password)
+    private void login( String email, String password)
     {
-//        ProgressDialog dialog = Common.createProgressDialog(activity,getString(R.string.wait));
-//        dialog.setCancelable(false);
-//        dialog.show();
-//        try {
-//
-//            Api.getService(Tags.base_url)
-//                    .login(phone,password)
-//                    .enqueue(new Callback<UserModel>() {
-//                        @Override
-//                        public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-//                            dialog.dismiss();
-//                            if (response.isSuccessful()&&response.body()!=null)
-//                            {
-//                                preferences.create_update_userdata(activity,response.body());
-//                                preferences.create_update_session(activity, Tags.session_login);
-//                                Intent intent = new Intent(activity, HomeStoreActivity.class);
-//                                startActivity(intent);
-//                                activity.finish();
-//
-//                            }else
-//                            {
-//                                try {
-//                                    Log.e("error",response.code()+"_"+response.errorBody().string());
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
-//
-//                                if (response.code() == 422) {
-//                                    Toast.makeText(activity, getString(R.string.inc_phone_pas), Toast.LENGTH_SHORT).show();
-//                                } else if (response.code() == 500) {
-//                                    Toast.makeText(activity, "Server Error", Toast.LENGTH_SHORT).show();
-//
-//
-//                                }else if (response.code()==404)
-//                                {
-//                                    Toast.makeText(activity, R.string.inc_phone_pas, Toast.LENGTH_SHORT).show();
-//
-//                                }else
-//                                {
-//                                    Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
-//
-//                                    try {
-//
-//                                        Log.e("error",response.code()+"_"+response.errorBody().string());
-//                                    } catch (IOException e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                }
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<UserModel> call, Throwable t) {
-//                            try {
-//                                dialog.dismiss();
-//                                if (t.getMessage()!=null)
-//                                {
-//                                    Log.e("error",t.getMessage());
-//                                    if (t.getMessage().toLowerCase().contains("failed to connect")||t.getMessage().toLowerCase().contains("unable to resolve host"))
-//                                    {
-//                                        Toast.makeText(activity,R.string.something, Toast.LENGTH_SHORT).show();
-//                                    }else
-//                                    {
-//                                        Toast.makeText(activity,t.getMessage(), Toast.LENGTH_SHORT).show();
-//                                    }
-//                                }
-//
-//                            }catch (Exception e){}
-//                        }
-//                    });
-//        }catch (Exception e){
-//            dialog.dismiss();
-//
-//        }
+        final ProgressDialog dialog = Common.createProgressDialog(activity,getString(R.string.wait));
+        dialog.setCancelable(false);
+        dialog.show();
+        try {
+
+            Api.getService(Tags.base_url)
+                    .login(email,password)
+                    .enqueue(new Callback<UserModel>() {
+                        @Override
+                        public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                            dialog.dismiss();
+                            if (response.isSuccessful()&&response.body()!=null)
+                            {
+                                preferences.create_update_userdata(activity,response.body());
+                                preferences.create_update_session(activity, Tags.session_login);
+                                Intent intent = new Intent(activity, HomeActivity.class);
+                                startActivity(intent);
+                                activity.finish();
+
+                            }else
+                            {
+                                try {
+                                    Log.e("error",response.code()+"_"+response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
+                                if (response.code() == 422) {
+                                    Toast.makeText(activity, getString(R.string.inve), Toast.LENGTH_SHORT).show();
+                                } else if (response.code() == 500) {
+                                    //Toast.makeText(activity, "Server Error", Toast.LENGTH_SHORT).show();
+
+
+                                }else if (response.code()==404)
+                                {
+                                    Toast.makeText(activity, R.string.invp, Toast.LENGTH_SHORT).show();
+
+                                }else
+                                {
+                                   // Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+
+                                    try {
+
+                                        Log.e("error",response.code()+"_"+response.errorBody().string());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserModel> call, Throwable t) {
+                            try {
+                                dialog.dismiss();
+                                if (t.getMessage()!=null)
+                                {
+                                    Log.e("error",t.getMessage());
+                                    if (t.getMessage().toLowerCase().contains("failed to connect")||t.getMessage().toLowerCase().contains("unable to resolve host"))
+                                    {
+                                       // Toast.makeText(activity,R.string.something, Toast.LENGTH_SHORT).show();
+                                    }else
+                                    {
+                                        Toast.makeText(activity,t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                            }catch (Exception e){}
+                        }
+                    });
+        }catch (Exception e){
+            dialog.dismiss();
+
+        }
     }
 
 

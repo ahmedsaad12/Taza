@@ -33,5 +33,13 @@
     <string name="no_order_to_display">No Order to Display</string>
     <string name="no_notification_found">No Notification Found</string>
     <string name="from">From :</string>
+    <string name="field_req">Field Required</string>
+    <string name="subscribe">SubScribe</string>
+    <string name="name">Name</string>
+    <string name="amount">Amount</string>
+    <string name="price">Price</string>
+    <string name="inve">Ivalid Email</string>
+    <string name="pass_short">Password Too Short</string>
+    <string name="invp">In Correct Password</string>
 
 </resources>

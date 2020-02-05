@@ -20,9 +20,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.elkhelj.taza.R;
 import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
+import com.elkhelj.taza.adapters.Products_Adapter;
+import com.elkhelj.taza.adapters.SubScribe_Adapter;
 import com.elkhelj.taza.databinding.FragmentSubscrabtionBinding;
+import com.elkhelj.taza.models.Product_Model;
 import com.elkhelj.taza.models.UserModel;
 import com.elkhelj.taza.preferences.Preferences;
+import com.elkhelj.taza.remote.Api;
+import com.elkhelj.taza.share.Common;
+import com.elkhelj.taza.tags.Tags;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,12 +44,11 @@ public class Fragment_Subscrabtions extends Fragment {
     private HomeActivity activity;
     private FragmentSubscrabtionBinding binding;
     private LinearLayoutManager manager;
-//    private List<NotificationDataModel.NotificationModel> notificationModelList;
-//    private Notification_Adapter notification_adapter;
+   private List<Product_Model> product_models;
+    private SubScribe_Adapter subScribe_adapter;
     private Preferences preferences;
     private UserModel userModel;
-    private boolean isLoading = false;
-    private int current_page2 = 1;
+
     public static Fragment_Subscrabtions newInstance() {
         return new Fragment_Subscrabtions();
     }
@@ -53,88 +58,152 @@ public class Fragment_Subscrabtions extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_subscrabtion,container,false);
         initView();
-//        getnotification();
         return binding.getRoot();
     }
 
     private void initView() {
+        product_models=new ArrayList<>();
         activity = (HomeActivity) getActivity();
         preferences=Preferences.newInstance();
         userModel=preferences.getUserData(activity);
         binding.progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         manager = new LinearLayoutManager(activity);
         binding.recView.setLayoutManager(manager);
-//notificationModelList=new ArrayList<>();
-//notification_adapter=new Notification_Adapter(notificationModelList,activity);
-//binding.recView.setAdapter(notification_adapter);
+        subScribe_adapter = new SubScribe_Adapter(product_models, activity,this);
+        binding.recView.setItemViewCacheSize(25);
+        binding.recView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        binding.recView.setDrawingCacheEnabled(true);
+//       binding.progBar.setVisibility(View.GONE);
+        binding.llNoProduct.setVisibility(View.GONE);
 
+        binding.recView.setAdapter(subScribe_adapter);
+getAds();
 
 
 
     }
-//    private void getnotification() {
-//        notificationModelList.clear();
-//        notification_adapter.notifyDataSetChanged();
-//        binding.progBar.setVisibility(View.VISIBLE);
-//
-//        try {
-//
-//
-//            Api.getService(Tags.base_url)
-//                    .getnotification(1, userModel.getUser().getId()+"")
-//                    .enqueue(new Callback<NotificationDataModel>() {
-//                        @Override
-//                        public void onResponse(Call<NotificationDataModel> call, Response<NotificationDataModel> response) {
-//                            binding.progBar.setVisibility(View.GONE);
-//                            if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
-//                                notificationModelList.clear();
-//                                notificationModelList.addAll(response.body().getData());
-//                                if (response.body().getData().size() > 0) {
-//                                    // rec_sent.setVisibility(View.VISIBLE);
-//                                    //  Log.e("data",response.body().getData().get(0).getAr_title());
-//
-//                                    binding.llNoNotification.setVisibility(View.GONE);
-//                                    notification_adapter.notifyDataSetChanged();
-//                                    //   total_page = response.body().getMeta().getLast_page();
-//
-//                                } else {
-//                                    notification_adapter.notifyDataSetChanged();
-//
-//                                    binding.llNoNotification.setVisibility(View.VISIBLE);
-//
-//                                }
-//                            } else {
-//                                notification_adapter.notifyDataSetChanged();
-//
-//                                binding.llNoNotification.setVisibility(View.VISIBLE);
-//
-//                                //Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
-//                                try {
-//                                    Log.e("Error_code", response.code() + "_" + response.errorBody().string());
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<NotificationDataModel> call, Throwable t) {
-//                            try {
-//                                binding.progBar.setVisibility(View.GONE);
-//                                binding.llNoNotification.setVisibility(View.VISIBLE);
-//
-//
-//                                Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
-//                                Log.e("error", t.getMessage());
-//                            } catch (Exception e) {
-//                            }
-//                        }
-//                    });
-//        } catch (Exception e) {
-//            binding.progBar.setVisibility(View.GONE);
-//            binding.llNoNotification.setVisibility(View.VISIBLE);
-//
-//        }
-//    }
+    private void getAds() {
+        product_models.clear();
+        subScribe_adapter.notifyDataSetChanged();
+        binding.progBar.setVisibility(View.VISIBLE);
 
+        try {
+
+
+            Api.getService(Tags.base_url)
+                    .getSubscribe()
+                    .enqueue(new Callback<List<Product_Model>>() {
+                        @Override
+                        public void onResponse(Call<List<Product_Model>> call, Response<List<Product_Model>> response) {
+                            binding.progBar.setVisibility(View.GONE);
+                            if (response.isSuccessful() && response.body() != null) {
+                                product_models.clear();
+                                product_models.addAll(response.body());
+                                if (response.body().size() > 0) {
+                                    // rec_sent.setVisibility(View.VISIBLE);
+                                    //  Log.e("data",response.body().getData().get(0).getAr_title());
+
+                                    binding.llNoProduct.setVisibility(View.GONE);
+                                    subScribe_adapter.notifyDataSetChanged();
+                                    //   total_page = response.body().getMeta().getLast_page();
+
+                                } else {
+                                    subScribe_adapter.notifyDataSetChanged();
+
+                                    binding.llNoProduct.setVisibility(View.VISIBLE);
+
+                                }
+                            } else {
+                                subScribe_adapter.notifyDataSetChanged();
+
+                                binding.llNoProduct.setVisibility(View.VISIBLE);
+
+                                //Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                                try {
+                                    Log.e("Error_code", response.code() + "_" + response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Product_Model>> call, Throwable t) {
+                            try {
+                                binding.progBar.setVisibility(View.GONE);
+                                binding.llNoProduct.setVisibility(View.VISIBLE);
+
+
+                                //     Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                                Log.e("error", t.getMessage());
+                            } catch (Exception e) {
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            binding.progBar.setVisibility(View.GONE);
+            binding.llNoProduct.setVisibility(View.VISIBLE);
+
+        }
+    }
+
+
+    public void setsubscribe(int layoutPosition) {
+
+      {
+            //   Common.CloseKeyBoard(homeActivity, edt_name);
+            final ProgressDialog dialog = Common.createProgressDialog(activity, getString(R.string.wait));
+            dialog.setCancelable(false);
+            dialog.show();
+            // rec_sent.setVisibility(View.GONE);
+            try {
+
+
+                Api.getService( Tags.base_url)
+                        .setSubscribe(userModel.getId()+"",product_models.get(layoutPosition)+"")
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                dialog.dismiss();
+
+                                //  binding.progBar.setVisibility(View.GONE);
+                                if (response.isSuccessful() && response.body() != null ) {
+                                    //binding.coord1.scrollTo(0,0);
+
+//getsingleads();
+
+
+
+
+                                } else {
+
+
+                                    //Toast.makeText(activity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                                    try {
+                                        Log.e("Error_code", response.code() + "_" + response.errorBody().string());
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                try {
+
+                                    dialog.dismiss();
+
+                                    //Toast.makeText(FollowingActivity.this, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                                    Log.e("error", t.getMessage());
+                                } catch (Exception e) {
+                                }
+                            }
+                        });
+            }catch (Exception e){
+
+                dialog.dismiss();
+            }
+
+
+    }}
 }

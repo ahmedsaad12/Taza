@@ -197,7 +197,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
             } else if (confirmpassword.length() < 6) {
                 error_confirm_password.set(context.getString(R.string.pass_short));
             } else {
-                error_confirm_password.set(null);
+                error_confirm _password.set(null);
             }
 
             if (gender_id.isEmpty()) {

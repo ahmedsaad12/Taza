@@ -186,7 +186,7 @@
                 android:textSize="15sp"
                 android:text="@string/login"
                 android:textAllCaps="false"
-                android:onClick="@{()->loginListener.checkDataLogin(loginModel.phone_code,loginModel.phone,loginModel.password)}"
+                android:onClick="@{()->loginListener.checkDataLogin(loginModel.email,loginModel.password)}"
                 />
 
 

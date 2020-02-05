@@ -13,21 +13,24 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import com.elkhelj.taza.R;
 import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
 import com.elkhelj.taza.adapters.Catogry_Adapter;
+import com.elkhelj.taza.adapters.Products_Adapter;
 import com.elkhelj.taza.databinding.FragmentMainBinding;
 import com.elkhelj.taza.models.Catogries_Model;
-import com.elkhelj.taza.models.List<Catogries_Model>;
+import com.elkhelj.taza.models.Product_Model;
 import com.elkhelj.taza.models.UserModel;
 import com.elkhelj.taza.preferences.Preferences;
 import com.elkhelj.taza.remote.Api;
 import com.elkhelj.taza.tags.Tags;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.paperdb.Paper;
@@ -39,14 +42,15 @@ public class Fragment_Main extends Fragment {
     private static Dialog dialog;
     private HomeActivity activity;
     private FragmentMainBinding binding;
-    private LinearLayoutManager manager, manager2;
+    private LinearLayoutManager manager2;
+    private GridLayoutManager manager;
     private Preferences preferences;
     private UserModel userModel;
-//
+    //
     private List<Catogries_Model> dataList;
     private Catogry_Adapter catogries_adapter;
-//    private Ads_Adapter ads_adapter;
-//    private List<Adversiment_Model.Data> advesriment_data_list;
+    private Products_Adapter ads_adapter;
+    private List<Product_Model> advesriment_data_list;
 
     public static Fragment_Main newInstance() {
         return new Fragment_Main();
@@ -59,17 +63,15 @@ public class Fragment_Main extends Fragment {
 
         getDepartments();
 
-      //  getAds();
+        getAds();
 
         return binding.getRoot();
     }
 
 
-
     private void initView() {
-//        dataList = new ArrayList<>();
-//        subcategories=new ArrayList<>();
-//        advesriment_data_list = new ArrayList<>();
+        dataList = new ArrayList<>();
+        advesriment_data_list = new ArrayList<>();
         activity = (HomeActivity) getActivity();
         preferences = Preferences.newInstance();
         userModel = preferences.getUserData(activity);
@@ -78,7 +80,7 @@ public class Fragment_Main extends Fragment {
 
         binding.progBar2.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(activity, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         binding.recView.setNestedScrollingEnabled(false);
-        manager = new LinearLayoutManager(activity);
+        manager = new GridLayoutManager(activity, 2);
         manager2 = new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false);
         binding.recView.setLayoutManager(manager);
         binding.recViewCategory.setLayoutManager(manager2);
@@ -87,137 +89,134 @@ public class Fragment_Main extends Fragment {
         binding.recViewCategory.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         binding.recViewCategory.setDrawingCacheEnabled(true);
 
-       binding.recViewCategory.setAdapter(catogries_adapter);
-//        ads_adapter = new Ads_Adapter(advesriment_data_list, activity);
+        binding.recViewCategory.setAdapter(catogries_adapter);
+        ads_adapter = new Products_Adapter(advesriment_data_list, activity);
         binding.recView.setItemViewCacheSize(25);
         binding.recView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
         binding.recView.setDrawingCacheEnabled(true);
-//        binding.progBar.setVisibility(View.GONE);
+//       binding.progBar.setVisibility(View.GONE);
         binding.llNoStore.setVisibility(View.GONE);
 
-//        binding.recView.setAdapter(ads_adapter);
-//        binding.recView.setNestedScrollingEnabled(true);
-//        subCategoryAdapter = new SubCategoryAdapter(activity, subcategories,this );
-//        binding.recViewsub.setLayoutManager(new LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false));
-//        binding.recViewsub.setAdapter(subCategoryAdapter);
+        binding.recView.setAdapter(ads_adapter);
+        binding.recView.setNestedScrollingEnabled(true);
+
 //
 
 
     }
 
-//    private void getAds() {
-//        advesriment_data_list.clear();
-//        ads_adapter.notifyDataSetChanged();
-//        binding.progBar2.setVisibility(View.VISIBLE);
-//
-//        try {
-//
-//
-//            Api.getService(Tags.base_url)
-//                    .getAds(1, cat_id)
-//                    .enqueue(new Callback<Adversiment_Model>() {
-//                        @Override
-//                        public void onResponse(Call<Adversiment_Model> call, Response<Adversiment_Model> response) {
-//                            binding.progBar2.setVisibility(View.GONE);
-//                            if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
-//                                advesriment_data_list.clear();
-//                                advesriment_data_list.addAll(response.body().getData());
-//                                if (response.body().getData().size() > 0) {
-//                                    // rec_sent.setVisibility(View.VISIBLE);
-//                                    //  Log.e("data",response.body().getData().get(0).getAr_title());
-//
-//                                    binding.llNoStore.setVisibility(View.GONE);
-//                                    ads_adapter.notifyDataSetChanged();
-//                                    //   total_page = response.body().getMeta().getLast_page();
-//
-//                                } else {
-//                                    ads_adapter.notifyDataSetChanged();
-//
-//                                    binding.llNoStore.setVisibility(View.VISIBLE);
-//
-//                                }
-//                            } else {
-//                                ads_adapter.notifyDataSetChanged();
-//
-//                                binding.llNoStore.setVisibility(View.VISIBLE);
-//
-//                                //Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
-//                                try {
-//                                    Log.e("Error_code", response.code() + "_" + response.errorBody().string());
-//                                } catch (IOException e) {
-//                                    e.printStackTrace();
-//                                }
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onFailure(Call<Adversiment_Model> call, Throwable t) {
-//                            try {
-//                                binding.progBar2.setVisibility(View.GONE);
-//                                binding.llNoStore.setVisibility(View.VISIBLE);
-//
-//
-//                                Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
-//                                Log.e("error", t.getMessage());
-//                            } catch (Exception e) {
-//                            }
-//                        }
-//                    });
-//        } catch (Exception e) {
-//            binding.progBar2.setVisibility(View.GONE);
-//            binding.llNoStore.setVisibility(View.VISIBLE);
-//
-//        }
-//    }
-//
-//
-//
+    private void getAds() {
+        advesriment_data_list.clear();
+        ads_adapter.notifyDataSetChanged();
+        binding.progBar2.setVisibility(View.VISIBLE);
+
+        try {
+
+
+            Api.getService(Tags.base_url)
+                    .getAds()
+                    .enqueue(new Callback<List<Product_Model>>() {
+                        @Override
+                        public void onResponse(Call<List<Product_Model>> call, Response<List<Product_Model>> response) {
+                            binding.progBar2.setVisibility(View.GONE);
+                            if (response.isSuccessful() && response.body() != null) {
+                                advesriment_data_list.clear();
+                                advesriment_data_list.addAll(response.body());
+                                if (response.body().size() > 0) {
+                                    // rec_sent.setVisibility(View.VISIBLE);
+                                    //  Log.e("data",response.body().getData().get(0).getAr_title());
+
+                                    binding.llNoStore.setVisibility(View.GONE);
+                                    ads_adapter.notifyDataSetChanged();
+                                    //   total_page = response.body().getMeta().getLast_page();
+
+                                } else {
+                                    ads_adapter.notifyDataSetChanged();
+
+                                    binding.llNoStore.setVisibility(View.VISIBLE);
+
+                                }
+                            } else {
+                                ads_adapter.notifyDataSetChanged();
+
+                                binding.llNoStore.setVisibility(View.VISIBLE);
+
+                                //Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                                try {
+                                    Log.e("Error_code", response.code() + "_" + response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Product_Model>> call, Throwable t) {
+                            try {
+                                binding.progBar2.setVisibility(View.GONE);
+                                binding.llNoStore.setVisibility(View.VISIBLE);
+
+
+                                //     Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                                Log.e("error", t.getMessage());
+                            } catch (Exception e) {
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            binding.progBar2.setVisibility(View.GONE);
+            binding.llNoStore.setVisibility(View.VISIBLE);
+
+        }
+    }
+
+
+    //
     public void getDepartments() {
-//        Api.getService(Tags.base_url)
-//                .getDepartment()
-//                .enqueue(new Callback<List<Catogries_Model>>() {
-//                    @Override
-//                    public void onResponse(Call<List<Catogries_Model>> call, Response<List<Catogries_Model>> response) {
-//                        //   progBar.setVisibility(View.GONE);
-//                        if (response.isSuccessful() && response.body() != null ) {
-//
-//                            dataList.addAll(response.body());
-//                            if (response.body().size() > 0) {
-//                                // rec_sent.setVisibility(View.VISIBLE);
-//
-//                                //   ll_no_order.setVisibility(View.GONE);
-//                                catogries_adapter.notifyDataSetChanged();
-//                                //   total_page = response.body().getMeta().getLast_page();
-//
-//                            } else {
-//                                //  ll_no_order.setVisibility(View.VISIBLE);
-//
-//                            }
-//                        } else {
-//
-//                       //     Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
-//                            try {
-//                                Log.e("Error_code", response.code() + "_" + response.errorBody().string());
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<List<Catogries_Model>> call, Throwable t) {
-//                        try {
-//
-//
-//                            //    Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
-//                            Log.e("error", t.getMessage());
-//                        } catch (Exception e) {
-//                        }
-//                    }
-//                });
+        Api.getService(Tags.base_url)
+                .getDepartment()
+                .enqueue(new Callback<List<Catogries_Model>>() {
+                    @Override
+                    public void onResponse(Call<List<Catogries_Model>> call, Response<List<Catogries_Model>> response) {
+                        //   progBar.setVisibility(View.GONE);
+                        if (response.isSuccessful() && response.body() != null) {
+
+                            dataList.addAll(response.body());
+                            if (response.body().size() > 0) {
+                                // rec_sent.setVisibility(View.VISIBLE);
+
+                                //   ll_no_order.setVisibility(View.GONE);
+                                catogries_adapter.notifyDataSetChanged();
+                                //   total_page = response.body().getMeta().getLast_page();
+
+                            } else {
+                                //  ll_no_order.setVisibility(View.VISIBLE);
+
+                            }
+                        } else {
+
+                            //     Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                            try {
+                                Log.e("Error_code", response.code() + "_" + response.errorBody().string());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Catogries_Model>> call, Throwable t) {
+                        try {
+
+
+                            //    Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                            Log.e("error", t.getMessage());
+                        } catch (Exception e) {
+                        }
+                    }
+                });
 
     }
-
 
 
 }

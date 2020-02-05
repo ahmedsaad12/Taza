@@ -6,7 +6,7 @@ import com.elkhelj.taza.models.ContactUsModel;
 public interface Listeners {
 
     interface LoginListener {
-        void checkDataLogin(String phone, String password);
+        void checkDataLogin(String email, String password);
     }
     interface SkipListener
     {
