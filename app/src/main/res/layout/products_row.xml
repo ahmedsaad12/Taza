@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text='@{lang.equals("ar")?(productsmodel.ar_title.length()>17?productsmodel.ar_title.substring(0,16)+"...":productsmodel.ar_title):(productsmodel.en_title.length()>17?productsmodel.en_title.substring(0,16)+"...":productsmodel.en_title)}'
+                android:text='@{lang.equals("ar")?productsmodel.ar_title:productsmodel.en_title}'
                 android:textColor="@color/black"
                 android:textSize="17sp" />
 

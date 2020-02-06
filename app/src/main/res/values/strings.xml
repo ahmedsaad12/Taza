@@ -41,5 +41,6 @@
     <string name="inve">Ivalid Email</string>
     <string name="pass_short">Password Too Short</string>
     <string name="invp">In Correct Password</string>
+    <string name="add_to_bage">Add To Bage</string>
 
 </resources>
