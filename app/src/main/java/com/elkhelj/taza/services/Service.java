@@ -41,8 +41,7 @@ public interface Service {
                            @Field("phone_code") String phone_code,
 
                            @Field("type") String type,
-                           @Field("shop_for") String shop_for,
-                           @Field("country") String country,
+                           @Field("notion_id") String notion_id,
                            @Field("city") String city
 
     );
@@ -104,4 +103,11 @@ public interface Service {
     );
     @GET("api/ALl-Cities")
     Call<List<Cities_Model>> getAllCities();
+    @FormUrlEncoded
+    @POST("api/single_product")
+    Call<Product_Model> getSingleAds(
+
+            @Field("product_id") String product_id
+
+    );
 }

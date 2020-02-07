@@ -5,10 +5,10 @@
     <data>
 
         <variable
-            name="lang"
+            ar_name="lang"
             type="String" />
         <variable
-            name="usermodel"
+            ar_name="usermodel"
             type="com.elkhelj.taza.models.UserModel" />
 
 
@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
 
                         android:gravity="center"
-                        android:text="@{usermodel.name}"
+                        android:text="@{usermodel.ar_name}"
                         android:textColor="@color/white"
                         android:textSize="14sp"
                         android:textStyle="bold"

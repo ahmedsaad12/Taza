@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-            name="model"
+            ar_name="model"
             type="com.elkhelj.taza.models.Product_Model" />
         <variable
-            name="lang"
+            ar_name="lang"
             type="String" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,7 +68,7 @@
         app:layout_constraintStart_toEndOf="@id/im1"
         app:layout_constraintEnd_toStartOf="@id/tv2"
         android:textColor="@color/gray4"
-        android:text='@{lang.equals("ar")?@string/name(model.ar_title):@string/name(model.en_title)}'
+        android:text='@{lang.equals("ar")?@string/ar_name(model.ar_title):@string/ar_name(model.en_title)}'
 
         android:layout_marginTop="5dp"
         android:paddingLeft="8dp"

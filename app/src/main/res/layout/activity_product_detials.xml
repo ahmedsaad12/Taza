@@ -8,16 +8,16 @@
     <data>
 
         <variable
-            name="lang"
+            ar_name="lang"
             type="String" />
 
         <variable
-            name="backListener"
+            ar_name="backListener"
             type="com.elkhelj.taza.interfaces.Listeners.BackListener" />
 
 
         <variable
-            name="productmodel"
+            ar_name="productmodel"
             type="com.elkhelj.taza.models.Product_Model" />
 
 

@@ -4,11 +4,11 @@
     <data>
 
         <variable
-            name="lang"
+            ar_name="lang"
             type="String" />
 
         <variable
-            name="productsmodel"
+            ar_name="productsmodel"
             type="com.elkhelj.taza.models.Product_Model" />
     </data>
 

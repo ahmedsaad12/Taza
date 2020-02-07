@@ -7,14 +7,14 @@
     >
     <data>
         <variable
-            name="backListener"
+            ar_name="backListener"
             type="com.elkhelj.taza.interfaces.Listeners.BackListener"
             />
         <variable
-            name="appdatamodel"
+            ar_name="appdatamodel"
             type="com.elkhelj.taza.models.App_Data_Model.Data" />
         <variable
-            name="lang"
+            ar_name="lang"
             type="String" />
 
     </data>

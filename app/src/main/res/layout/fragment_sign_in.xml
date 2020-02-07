@@ -5,22 +5,22 @@
 
     <data>
         <variable
-            name="lang"
+            ar_name="lang"
             type="String" />
        <variable
-           name="loginModel"
+           ar_name="loginModel"
            type="com.elkhelj.taza.models.LoginModel" />
         <variable
-            name="loginListener"
+            ar_name="loginListener"
             type="com.elkhelj.taza.interfaces.Listeners.LoginListener" />
         <variable
-            name="newAccountListener"
+            ar_name="newAccountListener"
             type="com.elkhelj.taza.interfaces.Listeners.CreateAccountListener" />
         <variable
-            name="skipListener"
+            ar_name="skipListener"
             type="com.elkhelj.taza.interfaces.Listeners.SkipListener" />
         <variable
-            name="showDialogListener"
+            ar_name="showDialogListener"
             type="com.elkhelj.taza.interfaces.Listeners.ShowCountryDialogListener" />
 
 

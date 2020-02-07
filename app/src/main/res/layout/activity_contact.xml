@@ -7,17 +7,17 @@
     >
     <data>
         <variable
-            name="backListener"
+            ar_name="backListener"
             type="com.elkhelj.taza.interfaces.Listeners.BackListener" />
         <variable
-            name="lang"
+            ar_name="lang"
             type="String" />
         <variable
-            name="contactUs"
+            ar_name="contactUs"
             type="com.elkhelj.taza.models.ContactUsModel" />
 
         <variable
-            name="contactListener"
+            ar_name="contactListener"
             type="com.elkhelj.taza.interfaces.Listeners.ContactListener" />
     </data>
 
@@ -107,7 +107,7 @@
                     android:textSize="14sp"
                     android:paddingLeft="8dp"
                     android:paddingRight="8dp"
-                    android:text="@={contactUs.name}"
+                    android:text="@={contactUs.ar_name}"
                     error="@{contactUs.error_name}"
                     />
 

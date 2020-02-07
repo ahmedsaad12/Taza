@@ -40,7 +40,7 @@ public interface Listeners {
 
     interface SignUpListener
     {
-        void checkDataSignUp(String name, String phone_code, String phone, String email, String password, String confirmpassword);
+        void checkDataSignUp(String name, String phone_code, String phone, String email, String password, String confirmpassword,String shop_name);
 
     }
 
