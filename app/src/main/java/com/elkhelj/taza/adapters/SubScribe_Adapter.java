@@ -1,6 +1,7 @@
 package com.elkhelj.taza.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ eventHolder.binding.setLang(lang);
 eventHolder.binding.btnsubscride.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+        Log.e("kkkkk","lllll");
         fragment_subscrabtions.setsubscribe(eventHolder.getLayoutPosition());
     }
 });

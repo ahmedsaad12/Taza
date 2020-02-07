@@ -31,6 +31,7 @@ import com.elkhelj.taza.activities_fragments.activity_home.fragments.Fragment_Mo
 import com.elkhelj.taza.activities_fragments.activity_home.fragments.Fragment_Profile;
 import com.elkhelj.taza.activities_fragments.activity_home.fragments.Fragment_Search;
 import com.elkhelj.taza.activities_fragments.activity_home.fragments.Fragment_Subscrabtions;
+import com.elkhelj.taza.activities_fragments.activity_product_detials.ProductDetialsActivity;
 import com.elkhelj.taza.activities_fragments.activity_sign_in.activities.SignInActivity;
 import com.elkhelj.taza.databinding.ActivityHomeBinding;
 import com.elkhelj.taza.language.LanguageHelper;
@@ -39,19 +40,7 @@ import com.elkhelj.taza.preferences.Preferences;
 import com.elkhelj.taza.remote.Api;
 import com.elkhelj.taza.share.Common;
 import com.elkhelj.taza.tags.Tags;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResult;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -127,6 +116,7 @@ private UserModel userModel;
         binding.ahBottomNav.addItem(item2);
         binding.ahBottomNav.addItem(item3);
         binding.ahBottomNav.addItem(item4);
+        binding.ahBottomNav.addItem(item5);
 
         updateBottomNavigationPosition(0);
 
@@ -401,7 +391,13 @@ private UserModel userModel;
 
 
 
+    public void showdetials(int id) {
+        Intent intent=new Intent(this, ProductDetialsActivity.class);
+        intent.putExtra("productid",id+"");
+        startActivity(intent);
 
+
+    }
 
 
 

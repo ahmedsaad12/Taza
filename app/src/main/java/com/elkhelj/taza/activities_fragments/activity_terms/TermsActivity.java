@@ -20,6 +20,7 @@ import com.elkhelj.taza.remote.Api;
 import com.elkhelj.taza.tags.Tags;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 import io.paperdb.Paper;
@@ -47,6 +48,9 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
 
 
     private void initView() {
+        if(getIntent().getIntExtra("search",-1)!=0){
+          //  type=getIntent().getIntExtra("search",-1)+"";
+        }
 
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
@@ -62,13 +66,13 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
 
         Api.getService(Tags.base_url)
                 .getterms()
-                .enqueue(new Callback<App_Data_Model>() {
+                .enqueue(new Callback<List<App_Data_Model>>() {
                     @Override
-                    public void onResponse(Call<App_Data_Model> call, Response<App_Data_Model> response) {
+                    public void onResponse(Call<List<App_Data_Model>> call, Response<List<App_Data_Model>> response) {
                         binding.progBar.setVisibility(View.GONE);
-                        if (response.isSuccessful() && response.body() != null && response.body().getData() != null ) {
+                        if (response.isSuccessful() && response.body() != null && response.body()!= null ) {
 
-                            binding.setAppdatamodel(response.body().getData());
+updateterms(response.body());
                         } else {
                             try {
 
@@ -88,7 +92,7 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
                     }
 
                     @Override
-                    public void onFailure(Call<App_Data_Model> call, Throwable t) {
+                    public void onFailure(Call<List<App_Data_Model>> call, Throwable t) {
                         try {
                             binding.progBar.setVisibility(View.GONE);
                             if (t.getMessage() != null) {
@@ -104,6 +108,10 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
                         }
                     }
                 });
+    }
+
+    private void updateterms(List<App_Data_Model> body) {
+
     }
 
     @Override

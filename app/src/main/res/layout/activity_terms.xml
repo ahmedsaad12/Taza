@@ -7,14 +7,14 @@
     >
     <data>
         <variable
-            ar_name="backListener"
+            name="backListener"
             type="com.elkhelj.taza.interfaces.Listeners.BackListener"
             />
         <variable
-            ar_name="appdatamodel"
-            type="com.elkhelj.taza.models.App_Data_Model.Data" />
+            name="appdatamodel"
+            type="com.elkhelj.taza.models.App_Data_Model" />
         <variable
-            ar_name="lang"
+            name="lang"
             type="String" />
 
     </data>
@@ -78,11 +78,15 @@
             android:fitsSystemWindows="true"
             android:fillViewport="true"
             >
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
+                android:layout_height="0dp"
+android:layout_weight="1"
                 >
                 <TextView
                     android:layout_width="match_parent"
@@ -102,6 +106,18 @@
                     android:layout_gravity="center"
                     />
             </FrameLayout>
+            <Button
+                android:id="@+id/btnSend"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_sign_up"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:text="Apply"
+                />
+</LinearLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

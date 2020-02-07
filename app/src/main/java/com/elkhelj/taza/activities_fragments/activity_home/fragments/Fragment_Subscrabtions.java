@@ -160,7 +160,7 @@ getAds();
 
 
                 Api.getService( Tags.base_url)
-                        .setSubscribe(userModel.getId()+"",product_models.get(layoutPosition)+"")
+                        .setSubscribe(userModel.getId()+"",product_models.get(layoutPosition).getId()+"")
                         .enqueue(new Callback<ResponseBody>() {
                             @Override
                             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -200,7 +200,7 @@ getAds();
                             }
                         });
             }catch (Exception e){
-
+Log.e("ffff",e.getMessage());
                 dialog.dismiss();
             }
 

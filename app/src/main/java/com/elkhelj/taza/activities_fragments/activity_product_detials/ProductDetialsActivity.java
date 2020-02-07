@@ -98,10 +98,10 @@ private int totalamount;
         binding.imageIncrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(amount<totalamount){
-                    binding.tvAmount.setText((amount+1)+"");
-                    amount+=1;
-                }
+//                if(amount<totalamount){
+                binding.tvAmount.setText((amount+1)+"");
+                amount+=1;
+//            }
             }
         });
         binding.btnSend.setOnClickListener(new View.OnClickListener() {
@@ -186,6 +186,7 @@ dialog.dismiss();
     private void updateddata(Product_Model body) {
         this.product_model=body;
         binding.setProductmodel(product_model);
+        totalamount=product_model.getAmount();
     }
 
 

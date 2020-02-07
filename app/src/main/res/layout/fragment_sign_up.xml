@@ -5,20 +5,20 @@
 
     <data>
         <variable
-            ar_name="lang"
+            name="lang"
             type="String" />
         <variable
-            ar_name="backListener"
+            name="backListener"
             type="com.elkhelj.taza.interfaces.Listeners.BackListener" />
         <variable
-            ar_name="signUpModel"
+            name="signUpModel"
             type="com.elkhelj.taza.models.SignUpModel" />
         <variable
-            ar_name="signUpListener"
+            name="signUpListener"
             type="com.elkhelj.taza.interfaces.Listeners.SignUpListener" />
 
         <variable
-            ar_name="showDialogListener"
+            name="showDialogListener"
             type="com.elkhelj.taza.interfaces.Listeners.ShowCountryDialogListener" />
 
     </data>
@@ -131,7 +131,7 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray5"
                         android:textSize="14sp"
-                        android:text="@={signUpModel.ar_name}"
+                        android:text="@={signUpModel.name}"
                         error="@{signUpModel.error_name}"
                         />
 
@@ -312,7 +312,7 @@
                     android:padding="2dp">
 
                     <Spinner
-                        android:id="@+id/sp_type"
+                        android:id="@+id/sp_city"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -345,7 +345,7 @@
                     android:padding="2dp">
 
                     <Spinner
-                        android:id="@+id/sp_city"
+                        android:id="@+id/sp_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -391,7 +391,7 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/gray4"
                         android:textSize="14sp"
-                        android:text="@={signUpModel.shop}"
+                        android:text="@={signUpModel.shop_name}"
                         error="@{signUpModel.error_shop_name}"
                         />
 
@@ -566,7 +566,7 @@
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:text="@string/signup"
-                android:onClick="@{()->signUpListener.checkDataSignUp(signUpModel.ar_name,signUpModel.national_id,signUpModel.phone,signUpModel.email,signUpModel.password,signUpModel.shop_name)}"
+                android:onClick="@{()->signUpListener.checkDataSignUp(signUpModel.name,signUpModel.national_id,signUpModel.phone,signUpModel.email,signUpModel.password,signUpModel.confirmpassword,signUpModel.shop_name)}"
                 />
 
 

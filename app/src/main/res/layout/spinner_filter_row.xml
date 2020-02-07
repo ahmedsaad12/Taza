@@ -4,10 +4,10 @@
     >
     <data>
         <variable
-            ar_name="filterModel"
+            name="filterModel"
             type="com.elkhelj.taza.models.Filter_model" />
         <variable
-            ar_name="lang"
+            name="lang"
             type="String" />
     </data>
     <LinearLayout

@@ -80,7 +80,7 @@ public class Fragment_Search extends Fragment {
         binding.recView.setDrawingCacheEnabled(true);
 //       binding.progBar.setVisibility(View.GONE);
         binding.llNoStore.setVisibility(View.GONE);
-
+binding.recView.setLayoutManager(manager);
         binding.recView.setAdapter(ads_adapter);
         binding.edtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -116,6 +116,8 @@ public class Fragment_Search extends Fragment {
                         public void onResponse(Call<List<Product_Model>> call, Response<List<Product_Model>> response) {
                             binding.progBar.setVisibility(View.GONE);
                             if (response.isSuccessful() && response.body() != null) {
+                                Log.e("Error_code", response.code() + "_" + response.body().toString());
+
                                 advesriment_data_list.clear();
                                 advesriment_data_list.addAll(response.body());
                                 if (response.body().size() > 0) {

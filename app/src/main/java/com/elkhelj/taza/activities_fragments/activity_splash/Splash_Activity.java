@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.elkhelj.taza.R;
+import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
 import com.elkhelj.taza.activities_fragments.activity_sign_in.activities.SignInActivity;
 import com.elkhelj.taza.databinding.ActivitySplashBinding;
 import com.elkhelj.taza.language.LanguageHelper;
@@ -52,9 +53,9 @@ public class Splash_Activity extends AppCompatActivity {
                 String session = preferences.getSession(Splash_Activity.this);
                 if (session.equals(Tags.session_login))
                 {
-//                    Intent intent=new Intent(Splash_Activity.this, HomeActivity.class);
-//                    startActivity(intent);
-//                    finish();
+                    Intent intent=new Intent(Splash_Activity.this, HomeActivity.class);
+                    startActivity(intent);
+                    finish();
                 }else
                 {
                     Intent intent=new Intent(Splash_Activity.this, SignInActivity.class);

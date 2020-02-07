@@ -3,7 +3,7 @@
     package="com.elkhelj.taza">
 
     <application
-        android:ar_name="com.elkhelj.taza.language.App"
+        android:name="com.elkhelj.taza.language.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -16,13 +16,63 @@
 
 
         <uses-library
-            android:ar_name="org.apache.http.legacy"
+            android:name="org.apache.http.legacy"
             android:required="false" />
 
 
 
         <activity
-            android:ar_name="com.elkhelj.taza.activities_fragments.activity_sign_in.activities.SignInActivity"
+            android:name="com.elkhelj.taza.activities_fragments.activity_sign_in.activities.SignInActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+
+        <activity
+            android:name=".activities_fragments.activity_home.HomeActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name=".activities_fragments.activity_terms.TermsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name=".activities_fragments.activity_about.AboutActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name=".activities_fragments.activity_contact.ContactActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name=".activities_fragments.activity_product_detials.ProductDetialsActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name=".activities_fragments.activity_notification.NotificationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name=".activities_fragments.activity_my_orders.MyOrdersActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
@@ -31,23 +81,17 @@
 
 
 
-
-
-
-
-
-
         <activity
-            android:ar_name=".activities_fragments.activity_splash.Splash_Activity"
+            android:name=".activities_fragments.activity_splash.Splash_Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             >
             <intent-filter>
-                <action android:ar_name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:ar_name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>

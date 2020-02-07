@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            ar_name="notificationModel"
+            name="notificationModel"
             type="com.elkhelj.taza.models.NotificationDataModel" />
 
     </data>
@@ -40,7 +40,6 @@
             />
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/image"
-           android:src="@drawable/logo"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginStart="5dp"
@@ -104,7 +103,7 @@ date="@{notificationModel.notification_date}"            />
             android:layout_height="match_parent"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:text="@string/user_phone"
+            android:text="@string/phone"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:gravity="center"

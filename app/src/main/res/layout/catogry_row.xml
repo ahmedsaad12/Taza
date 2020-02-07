@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            ar_name="admodel"
+            name="admodel"
             type="com.elkhelj.taza.models.Catogries_Model" />
     </data>
 
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@{admodel.ar_name}"
+                android:text="@{admodel.ar_title}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:gravity="center"

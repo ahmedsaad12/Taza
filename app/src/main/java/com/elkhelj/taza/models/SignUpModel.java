@@ -151,7 +151,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
     }
 
     public boolean isDataValid(Context context) {
-        if (!TextUtils.isEmpty(shop_name) &&
+        if (
                 !TextUtils.isEmpty(phone) &&
                 (password.length() >= 6 && password.equals(confirmpassword)) &&
                 !TextUtils.isEmpty(name) &&

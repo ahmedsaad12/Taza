@@ -6,7 +6,7 @@
     >
     <data>
         <variable
-            ar_name="lang"
+            name="lang"
             type="String" />
     </data>
     <ScrollView

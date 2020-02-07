@@ -5,22 +5,22 @@
 
     <data>
         <variable
-            ar_name="lang"
+            name="lang"
             type="String" />
        <variable
-           ar_name="loginModel"
+           name="loginModel"
            type="com.elkhelj.taza.models.LoginModel" />
         <variable
-            ar_name="loginListener"
+            name="loginListener"
             type="com.elkhelj.taza.interfaces.Listeners.LoginListener" />
         <variable
-            ar_name="newAccountListener"
+            name="newAccountListener"
             type="com.elkhelj.taza.interfaces.Listeners.CreateAccountListener" />
         <variable
-            ar_name="skipListener"
+            name="skipListener"
             type="com.elkhelj.taza.interfaces.Listeners.SkipListener" />
         <variable
-            ar_name="showDialogListener"
+            name="showDialogListener"
             type="com.elkhelj.taza.interfaces.Listeners.ShowCountryDialogListener" />
 
 
@@ -88,8 +88,8 @@
                         android:textColor="@color/black"
                         android:textColorHint="@color/white"
                         android:textSize="14sp"
-                        android:text="@={signUpModel.email}"
-                        error="@{signUpModel.error_email}"
+                        android:text="@={loginModel.email}"
+                        error="@{loginModel.error_email}"
 
 
 

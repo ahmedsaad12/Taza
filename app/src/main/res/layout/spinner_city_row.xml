@@ -4,10 +4,10 @@
     >
     <data>
         <variable
-            ar_name="cityModel"
+            name="cityModel"
             type="com.elkhelj.taza.models.Cities_Model" />
         <variable
-            ar_name="lang"
+            name="lang"
             type="String" />
     </data>
     <TextView
@@ -18,6 +18,6 @@
         android:gravity="center"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:text='@{cityModel.ar_name}'
+        android:text='@{cityModel.name}'
         />
 </layout>

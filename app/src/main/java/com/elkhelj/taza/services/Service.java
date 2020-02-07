@@ -42,7 +42,8 @@ public interface Service {
 
                            @Field("type") String type,
                            @Field("notion_id") String notion_id,
-                           @Field("city") String city
+                           @Field("city") String city,
+                           @Field("is_agree")String is_agree
 
     );
     @FormUrlEncoded
@@ -58,7 +59,7 @@ public interface Service {
 
     );
     @GET("api/condtions")
-    Call<App_Data_Model> getterms();
+    Call<List<App_Data_Model>> getterms();
 
     @GET("api/aboutUs")
     Call<App_Data_Model> getabout();
@@ -74,7 +75,7 @@ public interface Service {
 
 
     );
-    @GET("api/mainCategories")
+    @GET("api/all_categories")
     Call<List<Catogries_Model>> getDepartment(
 
 
@@ -89,7 +90,8 @@ public interface Service {
 
 
     );
-    @GET("api/add_subscribs")
+    @FormUrlEncoded
+    @POST("api/add_subscribs")
     Call<ResponseBody> setSubscribe(
             @Field("user_id") String user_id,
             @Field("product_id") String product_id
@@ -101,7 +103,7 @@ public interface Service {
 @Field("key_word")String key_word
 
     );
-    @GET("api/ALl-Cities")
+    @GET("api/all_cities")
     Call<List<Cities_Model>> getAllCities();
     @FormUrlEncoded
     @POST("api/single_product")

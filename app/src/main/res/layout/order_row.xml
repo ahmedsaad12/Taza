@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            ar_name="model"
+            name="model"
             type="com.elkhelj.taza.models.Order_Model" />
 
     </data>

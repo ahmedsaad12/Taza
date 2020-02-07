@@ -1,8 +1,10 @@
 package com.elkhelj.taza.activities_fragments.activity_sign_in.fragments;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -44,6 +46,8 @@ import io.paperdb.Paper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.app.Activity.RESULT_OK;
 
 public class Fragment_SignUp extends Fragment implements Listeners.SignUpListener, Listeners.BackListener, Listeners.ShowCountryDialogListener, OnCountryPickerListener {
     private SignInActivity activity;
@@ -310,7 +314,7 @@ public class Fragment_SignUp extends Fragment implements Listeners.SignUpListene
             dialog.setCancelable(false);
             dialog.show();
             Api.getService(Tags.base_url)
-                    .signUp(signUpModel.getName(), signUpModel.getShop_name(), signUpModel.getEmail(), signUpModel.getPassword(), signUpModel.getPhone(), "00974", signUpModel.getType_id(), signUpModel.getNational_id(),signUpModel.getCity_id())
+                    .signUp(signUpModel.getName(), signUpModel.getShop_name(), signUpModel.getEmail(), signUpModel.getPassword(), signUpModel.getPhone(), "00962", signUpModel.getType_id(), signUpModel.getNational_id(),signUpModel.getCity_id(),"1")
                     .enqueue(new Callback<UserModel>() {
                         @Override
                         public void onResponse(Call<UserModel> call, Response<UserModel> response) {
@@ -371,6 +375,17 @@ public class Fragment_SignUp extends Fragment implements Listeners.SignUpListene
                     });
         } catch (Exception e) {
         }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+          if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            if (data.hasExtra("accept")) {
+
+
+            }
+        }
+
     }
 
 }

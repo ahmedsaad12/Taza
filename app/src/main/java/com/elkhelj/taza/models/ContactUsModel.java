@@ -105,7 +105,7 @@ public class ContactUsModel extends BaseObservable implements Serializable {
             if (email.isEmpty()) {
                 error_email.set(context.getString(R.string.field_req));
             }else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                error_email.set(context.getString(R.string.inv_email));
+                error_email.set(context.getString(R.string.inve));
             } else {
                 error_email.set(null);
             }
