@@ -64,5 +64,6 @@
     <string name="profile">Profile</string>
     <string name="more">More</string>
     <string name="cart">cart</string>
+    <string name="unsubscribe">unsubscribe</string>
 
 </resources>

@@ -31,7 +31,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/main"
             app:contentInsetEnd="0dp"
             app:contentInsetLeft="0dp"
             app:contentInsetRight="0dp"
@@ -44,7 +44,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="@{()->backListener.back()}"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+
+                >
 
                 <ImageView
                     android:layout_width="35dp"
@@ -54,7 +56,7 @@
                     android:padding="8dp"
                     android:rotation='@{lang.equals("ar")?180:0}'
                     android:src="@drawable/ic_left_arrow"
-                    android:tint="@color/white" />
+                    android:tint="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -64,8 +66,8 @@
                     android:layout_marginEnd="5dp"
                     android:clickable="false"
                     android:longClickable="false"
-                    android:text=""
-                    android:textColor="@color/white"
+                    android:text="back"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -124,6 +126,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -174,13 +177,11 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
                         >
                         <ImageView
                             android:id="@+id/image_decrease"
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/add_bg"
-                            android:src="@drawable/white_minus"
+                            android:src="@drawable/mins"
                             android:padding="7dp"
-                            android:tint="@color/black"
                             />
                     </FrameLayout>
 
@@ -213,13 +214,11 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
                         >
                         <ImageView
                             android:id="@+id/image_increase"
-                            android:layout_width="27dp"
-                            android:layout_height="27dp"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:background="@drawable/add_bg"
                             android:src="@drawable/add"
                             android:padding="7dp"
-                            android:tint="@color/black"
                             />
                     </FrameLayout>
 
@@ -235,7 +234,7 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text='@{productmodel.price+"R.Q"}'
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
 
         />
@@ -243,7 +242,7 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text='@{lang.equals("ar")?productmodel.description:productmodel.description}'
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
 
         />

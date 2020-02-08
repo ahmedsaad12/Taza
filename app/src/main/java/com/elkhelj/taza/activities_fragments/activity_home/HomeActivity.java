@@ -336,7 +336,11 @@ private UserModel userModel;
         if (userModel == null) {
             NavigateToSignInActivity();
         } else {
-            Logout();
+            preferences.create_update_userdata(HomeActivity.this, null);
+            preferences.create_update_session(HomeActivity.this, Tags.session_logout);
+            Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 
@@ -380,11 +384,7 @@ private UserModel userModel;
                                         }
                                     },1);
                             userSingleTone.clear(ClientHomeActivity.this);*/
-                            preferences.create_update_userdata(HomeActivity.this, null);
-                            preferences.create_update_session(HomeActivity.this, Tags.session_logout);
-                            Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
-                            startActivity(intent);
-                            finish();
+
 
                         }
                     }

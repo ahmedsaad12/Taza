@@ -28,7 +28,7 @@
             android:id="@+id/toolBar"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/white"
             app:contentInsetStart="0dp"
             app:layout_constraintTop_toTopOf="parent"
 
@@ -43,7 +43,7 @@
                 android:padding="13dp"
                 android:rotation='@{lang.equals("en")?180:0}'
                 android:src="@drawable/ic_arrow_right"
-                android:tint="@color/white"
+                android:tint="@color/black"
                 android:onClick="@{()->backListener.back()}"
 
                 />
@@ -55,7 +55,7 @@
                 android:layout_weight="1.0"
                 android:gravity="center"
                 android:text="@string/orders"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:onClick="@{()->backListener.back()}"
 
@@ -72,16 +72,16 @@
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab"
-                android:background="@color/colorPrimaryDark"
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
                 app:tabGravity="fill"
                 app:tabMode="fixed"
-                app:tabTextColor="@color/white"
-                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/black"
+                app:tabSelectedTextColor="@color/black"
                 app:tabIndicatorHeight="4dp"
-                app:tabIndicatorColor="@color/white"
+                app:tabIndicatorColor="@color/black"
 
                 />
             <androidx.viewpager.widget.ViewPager

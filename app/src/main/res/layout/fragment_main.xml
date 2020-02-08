@@ -16,6 +16,14 @@
     android:orientation="vertical"
     android:padding="5dp"
     >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:text="Catogries"
+        android:padding="10dp"
+        />
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recViewCategory"
 
@@ -68,7 +76,14 @@
                     />
 
             </LinearLayout>
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:text="Most PoPular"
+                android:padding="10dp"
+                />
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recView"
 

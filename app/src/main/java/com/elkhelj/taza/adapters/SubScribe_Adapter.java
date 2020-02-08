@@ -62,6 +62,13 @@ eventHolder.binding.btnsubscride.setOnClickListener(new View.OnClickListener() {
         fragment_subscrabtions.setsubscribe(eventHolder.getLayoutPosition());
     }
 });
+if(orderlist.get(position).getType()==1){
+    eventHolder.binding.btnsubscride.setText(context.getResources().getString(R.string.subscribe));
+}
+else if(orderlist.get(position).getType()==2){
+    eventHolder.binding.btnsubscride.setText(context.getResources().getString(R.string.unsubscribe));
+
+}
     }
 
     @Override

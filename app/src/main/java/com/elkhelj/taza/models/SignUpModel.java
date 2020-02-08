@@ -188,11 +188,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
                 error_phone.set(null);
             }
 
-            if (shop_name.isEmpty()) {
-                error_shop_name.set(context.getString(R.string.field_req));
-            } else {
-                error_shop_name.set(null);
-            }
+
 
 
             if (password.isEmpty()) {

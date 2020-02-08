@@ -18,6 +18,7 @@ public class Product_Model implements Serializable {
           private String weight;
           private String unit;
 private int amount;
+private int type;
          private String category_ar_title;
 
     public int getId() {
@@ -78,5 +79,13 @@ private int amount;
 
     public String getCategory_ar_title() {
         return category_ar_title;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

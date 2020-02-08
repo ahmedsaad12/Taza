@@ -129,6 +129,8 @@ sendmessge(contactUsModel);
                         }
                     });
         } catch (Exception e) {
+            Log.e("error", e.getMessage());
+
         }
     }
 }

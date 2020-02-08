@@ -91,7 +91,7 @@ getAds();
 
 
             Api.getService(Tags.base_url)
-                    .getSubscribe()
+                    .getSubscribe(userModel.getId()+"")
                     .enqueue(new Callback<List<Product_Model>>() {
                         @Override
                         public void onResponse(Call<List<Product_Model>> call, Response<List<Product_Model>> response) {
@@ -148,7 +148,7 @@ getAds();
     }
 
 
-    public void setsubscribe(int layoutPosition) {
+    public void setsubscribe(final int layoutPosition) {
 
       {
             //   Common.CloseKeyBoard(homeActivity, edt_name);
@@ -172,9 +172,15 @@ getAds();
 
 //getsingleads();
 
+                                 if(product_models.get(layoutPosition).getType()==1){
+                                     product_models.get(layoutPosition).setType(2);
 
+                                 }
+                                 else if(product_models.get(layoutPosition).getType()==2){
+                                     product_models.get(layoutPosition).setType(1);
 
-
+                                 }
+subScribe_adapter.notifyDataSetChanged();
                                 } else {
 
 

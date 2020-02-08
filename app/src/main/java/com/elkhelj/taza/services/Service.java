@@ -86,8 +86,10 @@ public interface Service {
 
 
     );
-    @GET("api/all_Subscription")
+    @FormUrlEncoded
+    @POST("api/all_Subscription")
     Call<List<Product_Model>> getSubscribe(
+            @Field("user_id") String user_id
 
 
     );

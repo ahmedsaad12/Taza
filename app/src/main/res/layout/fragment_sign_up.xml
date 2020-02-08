@@ -180,7 +180,7 @@
                         android:paddingStart="2dp"
                         android:paddingEnd="2dp"
                         android:textColor="@color/black"
-                        android:text="+974"
+                        android:text="+962"
 
                         android:textSize="15sp"
                         />

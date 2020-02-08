@@ -116,6 +116,7 @@ order_model.setName(order_upload_model.getName());
                     // Common.CreateSignAlertDialog(activity, getResources().getString(R.string.sucess));
 
                     //  activity.refresh(Send_Data.getType());
+                    preferences.create_update_order(CompleteOrderActivity.this,null);
                     Intent intent=new Intent(CompleteOrderActivity.this, MyOrdersActivity.class);
                     startActivity(intent);
                     finish();
