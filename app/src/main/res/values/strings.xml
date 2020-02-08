@@ -48,5 +48,6 @@
     <string name="em_exist">User Exist</string>
     <string name="suc">Add To Cart Sucess</string>
     <string name="user_phone">User Phone</string>
+    <string name="total">Total</string>
 
 </resources>

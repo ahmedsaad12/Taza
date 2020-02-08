@@ -26,6 +26,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 
 import com.elkhelj.taza.R;
+import com.elkhelj.taza.activities_fragments.activity_cart.CartActivity;
 import com.elkhelj.taza.activities_fragments.activity_home.fragments.Fragment_Main;
 import com.elkhelj.taza.activities_fragments.activity_home.fragments.Fragment_More;
 import com.elkhelj.taza.activities_fragments.activity_home.fragments.Fragment_Profile;
@@ -93,6 +94,13 @@ private UserModel userModel;
 
 
         setUpBottomNavigation();
+        binding.imageFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent=new Intent(HomeActivity.this, CartActivity.class);
+               startActivity(intent);
+            }
+        });
     }
 
 
