@@ -51,5 +51,9 @@
     <string name="total">Total</string>
     <string name="current_order">Current Orders</string>
     <string name="finish_order">Previous</string>
+    <string name="complete_order">Complete Order</string>
+    <string name="address">Address</string>
+    <string name="detials">Detials</string>
+    <string name="send">Send</string>
 
 </resources>

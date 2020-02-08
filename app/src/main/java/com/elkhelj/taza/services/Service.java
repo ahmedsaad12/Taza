@@ -1,5 +1,6 @@
 package com.elkhelj.taza.services;
 
+import com.elkhelj.taza.models.Add_Order_Model;
 import com.elkhelj.taza.models.App_Data_Model;
 import com.elkhelj.taza.models.Catogries_Model;
 import com.elkhelj.taza.models.Cities_Model;
@@ -112,4 +113,6 @@ public interface Service {
             @Field("product_id") String product_id
 
     );
+    @POST("api/add_order")
+    Call<ResponseBody> accept_orders(@Body Add_Order_Model add_order_model);
 }
