@@ -1,6 +1,7 @@
 package com.elkhelj.taza.activities_fragments.activity_terms;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ import retrofit2.Response;
 public class TermsActivity extends AppCompatActivity implements Listeners.BackListener {
     private ActivityTermsBinding binding;
     private String lang;
+    private String type;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -48,17 +50,30 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
 
 
     private void initView() {
-        if(getIntent().getIntExtra("search",-1)!=0){
-          //  type=getIntent().getIntExtra("search",-1)+"";
+        if(getIntent().getStringExtra("type")!=null){
+         type=getIntent().getStringExtra("type");
         }
-
+else {
+    binding.btnSend.setVisibility(View.GONE);
+        }
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
         binding.setBackListener(this);
         binding.progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         getTerms();
-
+binding.btnSend.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent = getIntent();
+        if (intent!=null)
+        {
+            intent.putExtra("terms","1");
+            setResult(RESULT_OK,intent);
+        }
+        finish();
+    }
+});
 
     }
 
@@ -111,7 +126,12 @@ updateterms(response.body());
     }
 
     private void updateterms(List<App_Data_Model> body) {
-
+for(int i=0;i<body.size();i++){
+    if(body.get(i).getType()==Integer.parseInt(type)){
+        binding.setAppdatamodel(body.get(i));
+        break;
+    }
+}
     }
 
     @Override

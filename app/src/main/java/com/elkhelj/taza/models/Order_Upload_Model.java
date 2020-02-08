@@ -18,13 +18,11 @@ public class Order_Upload_Model extends BaseObservable implements Serializable {
 private String name;
 
     private String address;
-    private String details;
 
 
     public ObservableField<String> address_error = new ObservableField<>();
     public ObservableField<String> name_error = new ObservableField<>();
 
-    public ObservableField<String> detials_error = new ObservableField<>();
 
 
 
@@ -33,15 +31,13 @@ private String name;
         if (
 
 
-                !TextUtils.isEmpty(details)
-&&!TextUtils.isEmpty(name)
+!TextUtils.isEmpty(name)
                         &&!TextUtils.isEmpty(address)
 
 
         )
         {
             address_error.set(null);
-            detials_error.set(null);
 name_error.set(null);
             return true;
         }else
@@ -70,14 +66,7 @@ name_error.set(null);
 
                 }
 
-                if (TextUtils.isEmpty(details))
-                {
-                    detials_error.set(context.getString(R.string.field_req));
-                }else
-                {
-                    detials_error.set(null);
 
-                }
 
                 return false;
             }
@@ -119,13 +108,7 @@ name_error.set(null);
         notifyPropertyChanged(BR.address);
 
     }
-    public String getDetails() {
-        return details;
-    }
 
-    public void setDetails(String details) {
-        this.details = details;
-    }
 
 
 }

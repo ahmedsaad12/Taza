@@ -6,6 +6,8 @@ public class UserModel implements Serializable {
 
     private int id;
     private String type;
+    private int user_id;
+
     private String name;
     private String phone_code;
     private String phone;
@@ -71,6 +73,10 @@ public class UserModel implements Serializable {
 
     public String getType() {
         return type;
+    }
+
+    public int getUser_id() {
+        return user_id;
     }
 
     public String getName() {

@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import com.elkhelj.taza.R;
 import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
 import com.elkhelj.taza.activities_fragments.activity_sign_in.activities.SignInActivity;
+import com.elkhelj.taza.activities_fragments.activity_terms.TermsActivity;
 import com.elkhelj.taza.adapters.CityAdapter;
 import com.elkhelj.taza.adapters.FilterAdapter;
 import com.elkhelj.taza.databinding.FragmentSignUpBinding;
@@ -299,8 +300,15 @@ public class Fragment_SignUp extends Fragment implements Listeners.SignUpListene
         signUpModel.setConfirmpassword(confirmpassword);
         signUpModel.setShop_name(shop_name);
         if (signUpModel.isDataValid(activity)) {
-            signUp(signUpModel);
+            navigatetoterms();
+         //   signUp(signUpModel);
         }
+    }
+
+    private void navigatetoterms() {
+        Intent intent=new Intent(activity, TermsActivity.class);
+        intent.putExtra("type",gender+"");
+        startActivityForResult(intent,1);
     }
 
     @Override
@@ -380,8 +388,8 @@ public class Fragment_SignUp extends Fragment implements Listeners.SignUpListene
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
           if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
-            if (data.hasExtra("accept")) {
-
+            if (data.getStringExtra("terms")!=null) {
+signUp(signUpModel);
 
             }
         }

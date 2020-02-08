@@ -55,5 +55,14 @@
     <string name="address">Address</string>
     <string name="detials">Detials</string>
     <string name="send">Send</string>
+    <string name="edit">Edit</string>
+    <string name="product_name">Product name</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="forgot">Forgot</string>
+    <string name="if_you_need_help_resetting_your_password_we_can_help_by_sending_you_alink_to_reset_it">If you need help resetting your password we can help by sending you alink to reset it</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="more">More</string>
+    <string name="cart">cart</string>
 
 </resources>

@@ -91,7 +91,6 @@ public class CompleteOrderActivity extends AppCompatActivity implements Listener
     }
     private void checkdata() {
         Add_Order_Model order_model=new Add_Order_Model();
-order_model.setDes(order_upload_model.getDetails());
 order_model.setAddress(order_upload_model.getAddress());
 order_model.setName(order_upload_model.getName());
         if(preferences.getUserOrder(this)!=null){
@@ -122,6 +121,7 @@ order_model.setName(order_upload_model.getName());
                     finish();
                 } else {
                     //  Common.CreateDialogAlert(CartActivity.this, getString(R.string.failed));
+                    Log.e("Error_code", response.code() + "_" + response.message());
 
                     try {
                         Log.e("Error_code", response.code() + "_" + response.errorBody().string());

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="lang"
+            type="String" />
+
+        <variable
+            name="editprofilelistner"
+            type="com.elkhelj.taza.interfaces.Listeners.EditprofileListener" />
+
+
+
+        <variable
+            name="backListener"
+            type="com.elkhelj.taza.interfaces.Listeners.BackListener" />
+
+        <variable
+            name="showDialogListener"
+            type="com.elkhelj.taza.interfaces.Listeners.ShowCountryDialogListener" />
+
+        <variable
+            name="viewModel"
+            type="com.elkhelj.taza.models.EditprofileModel" />
+
+        <variable
+            name="usermodel"
+            type="com.elkhelj.taza.models.UserModel" />
+
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clickable="true"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:focusable="true"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:onClick="@{()->backListener.back()}"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/arrow"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:clickable="false"
+                    android:longClickable="false"
+                    android:padding="8dp"
+                    android:rotation='@{lang.equals("en")?180:0}'
+                    android:src="@drawable/ic_arrow_right"
+                    android:tint="@color/colorPrimary"
+
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:clickable="false"
+                    android:longClickable="false"
+                    android:text="@string/back"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/fl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                >
+
+            </FrameLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fl"
+                    app:layout_constraintVertical_bias=".1"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+
+                        <EditText
+                            android:id="@+id/edtName"
+                            error="@{viewModel.error_name}"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/transparent"
+                            android:hint="@string/user_name"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@={viewModel.name}"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray4"
+                            android:textSize="14sp"
+
+
+                            />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorPrimary" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp">
+
+                        <ImageView
+                            android:id="@+id/image2"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:visibility="gone"
+                            android:src="@drawable/ic_phone_call"
+                            android:tint="@color/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:visibility="gone"
+                            android:id="@+id/viewPhoneCode"
+                            android:layout_width="1px"
+                            android:layout_height="0dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@color/gray4"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/image2"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/edtPhone"
+                            error="@{viewModel.error_phone}"
+                            android:layout_width="0dp"
+                            android:layout_height="30dp"
+                            android:background="@color/transparent"
+                            android:hint="@string/user_phone"
+                            android:inputType="phone"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:singleLine="true"
+                            android:text="@={viewModel.phone}"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray4"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/viewPhoneCode"
+                            app:layout_constraintTop_toTopOf="parent"
+
+                            />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorPrimary" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:padding="5dp"
+                            android:visibility="gone"
+                            android:tint="@color/colorPrimary" />
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@color/gray4" />
+
+                        <EditText
+                            android:id="@+id/edtEmail"
+                            error="@{viewModel.error_email}"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/transparent"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@={viewModel.email}"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/gray4"
+                            android:textSize="14sp"
+
+
+                            />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorPrimary" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="35dp">
+
+                        <Spinner
+                            android:id="@+id/spinnerCity"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:spinnerMode="dialog"
+                            app:backgroundTint="@color/colorPrimary"
+
+                            />
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@color/colorPrimary" />
+
+
+
+                </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnEdit"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="100dp"
+                android:background="@drawable/btn_sign_up"
+                android:onClick="@{()->editprofilelistner.Editprofile(viewModel.name,viewModel.phone,viewModel.email)}"
+                android:text="@string/edit"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll"
+
+                />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

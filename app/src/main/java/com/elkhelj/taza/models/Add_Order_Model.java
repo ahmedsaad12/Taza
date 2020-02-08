@@ -6,19 +6,20 @@ import java.util.List;
 public class Add_Order_Model implements Serializable {
 
 
-    private int form_id;
+    private int user_id;
 
 private String name;
 private String address;
-private String des;
+private double latitude=0.0;
+private double longitude=0.0;
   private List<Orders_Cart_Model> orderDetalis;
 
-    public int getForm_id() {
-        return form_id;
+    public int getUser_id() {
+        return user_id;
     }
 
     public void setUser_id(int user_id) {
-        this.form_id = user_id;
+        this.user_id = user_id;
     }
 
     public String getName() {
@@ -37,12 +38,24 @@ private String des;
         this.address = address;
     }
 
-    public String getDes() {
-        return des;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setDes(String des) {
-        this.des = des;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public void setOrderDetalis(List<Orders_Cart_Model> orderDetalis) {
+        this.orderDetalis = orderDetalis;
     }
 
     public List<Orders_Cart_Model> getOrderDetalis() {

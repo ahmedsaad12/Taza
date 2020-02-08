@@ -42,7 +42,7 @@
 
                         app:riv_border_color="@color/black"
                         app:riv_corner_radius="10dp"
-
+android:src="@drawable/main"
                         />
 
 

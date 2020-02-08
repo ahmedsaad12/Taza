@@ -107,13 +107,13 @@ private UserModel userModel;
 
     private void setUpBottomNavigation() {
 
-        AHBottomNavigationItem item1 = new AHBottomNavigationItem("", R.drawable.ic_nav_home);
-        AHBottomNavigationItem item2 = new AHBottomNavigationItem("", R.drawable.ic_user);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem("", R.drawable.ic_nav_notification);
-        AHBottomNavigationItem item4 = new AHBottomNavigationItem("", R.drawable.ic_user);
-        AHBottomNavigationItem item5 = new AHBottomNavigationItem("", R.drawable.ic_more);
+        AHBottomNavigationItem item1 = new AHBottomNavigationItem(getResources().getString(R.string.home), R.drawable.ic_nav_home);
+        AHBottomNavigationItem item2 = new AHBottomNavigationItem(getResources().getString(R.string.profile), R.drawable.ic_user);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getResources().getString(R.string.search), R.drawable.ic_nav_notification);
+        AHBottomNavigationItem item4 = new AHBottomNavigationItem(getResources().getString(R.string.subscribe), R.drawable.subscribe);
+        AHBottomNavigationItem item5 = new AHBottomNavigationItem(getResources().getString(R.string.more), R.drawable.ic_more);
 
-        binding.ahBottomNav.setTitleState(AHBottomNavigation.TitleState.ALWAYS_HIDE);
+        binding.ahBottomNav.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
         binding.ahBottomNav.setDefaultBackgroundColor(ContextCompat.getColor(this, R.color.white));
         binding.ahBottomNav.setTitleTextSizeInSp(14, 12);
         binding.ahBottomNav.setForceTint(true);

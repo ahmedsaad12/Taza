@@ -9,10 +9,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentManager;
 
 import com.elkhelj.taza.R;
+import com.elkhelj.taza.activities_fragments.activity_sign_in.fragments.Fragment_Forgetpass;
+import com.elkhelj.taza.activities_fragments.activity_sign_in.fragments.Fragment_Newpass;
 import com.elkhelj.taza.activities_fragments.activity_sign_in.fragments.Fragment_SignUp;
 import com.elkhelj.taza.activities_fragments.activity_sign_in.fragments.Fragment_Sign_In;
 import com.elkhelj.taza.databinding.ActivitySignInBinding;
 import com.elkhelj.taza.language.LanguageHelper;
+import com.elkhelj.taza.models.UserModel;
 import com.elkhelj.taza.preferences.Preferences;
 
 import java.util.Locale;
@@ -29,7 +32,9 @@ public class SignInActivity extends AppCompatActivity {
     private Fragment_SignUp fragment_sign_up;
     private String cuurent_language;
     private Preferences preferences;
-   
+    private Fragment_Forgetpass fragment_forgetpass;
+    private Fragment_Newpass fragment_newpass;
+
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -87,7 +92,22 @@ public class SignInActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container, fragment_sign_in, "fragment_sign_in").addToBackStack("fragment_sign_in").commit();
         }
     }
+    public void DisplayFragmentpass() {
+        fragment_count += 1;
+        fragment_forgetpass= Fragment_Forgetpass.newInstance();
+        if (fragment_forgetpass.isAdded()) {
+            fragmentManager.beginTransaction().show(fragment_forgetpass).commit();
+        } else {
+            fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container, fragment_forgetpass, "fragment_forgetpass").addToBackStack("fragment_forgetpass").commit();
+        }
+    }
+    public void displayFragmentNewpass(UserModel userModel) {
+        fragment_count ++;
+        fragment_newpass = Fragment_Newpass.newInstance(userModel);
 
+        fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container, fragment_newpass, "fragment_newpass").addToBackStack("fragment_newpass").commit();
+
+    }
     /*
         public void DisplayFragmentLanguage() {
             fragment_language = Fragment_Language.newInstance();

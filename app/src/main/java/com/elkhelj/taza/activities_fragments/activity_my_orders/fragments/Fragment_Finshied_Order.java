@@ -83,7 +83,7 @@ public class Fragment_Finshied_Order extends Fragment {
 
 
             Api.getService( Tags.base_url)
-                    .getMyAds(userModel.getId()+"",userModel.getType()+"")
+                    .getMyAds(userModel.getId()+"","3")
                     .enqueue(new Callback<List<Order_Model>>() {
                         @Override
                         public void onResponse(Call<List<Order_Model>> call, Response<List<Order_Model>> response) {

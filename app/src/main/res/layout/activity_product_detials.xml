@@ -99,7 +99,7 @@
                             android:id="@+id/pager"
                            image="@{productmodel.main_image}"
                             android:scaleType="fitXY"
-                            android:src="@drawable/flag_eg"
+                            android:src="@drawable/main"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
 

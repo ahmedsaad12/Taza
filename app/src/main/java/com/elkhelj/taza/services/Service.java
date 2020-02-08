@@ -113,6 +113,26 @@ public interface Service {
             @Field("product_id") String product_id
 
     );
+
     @POST("api/add_order")
     Call<ResponseBody> accept_orders(@Body Add_Order_Model add_order_model);
+    @FormUrlEncoded
+    @POST("api/update_profile")
+    Call<UserModel> editprofile(@Field("name") String name,
+                                @Field("mobile") String mobile,
+
+                                @Field("email") String email,
+                                @Field("city") String city,
+                                @Field("user_id") int user_id
+    );
+    @FormUrlEncoded
+    @POST("api/update_profile")
+    Call<UserModel> editprofile(@Field("password") String name,
+
+                                @Field("user_id") String user_id
+    );
+    @FormUrlEncoded
+    @POST("api/canRest")
+    Call<UserModel> forget(@Field("kayWord") String kayWord
+    );
 }

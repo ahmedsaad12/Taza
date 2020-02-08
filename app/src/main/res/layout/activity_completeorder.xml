@@ -121,22 +121,6 @@
                     />
 
 
-                <EditText
-                    android:id="@+id/edtAdDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:singleLine="true"
-                    android:background="@drawable/edt_bg"
-                    android:layout_marginTop="8dp"
-                    android:textColorHint="@color/gray4"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:hint="@string/detials"
-                    android:padding="8dp"
-                    android:gravity="top"
-                    android:text="@={orderModel.details}"
-                    error="@{orderModel.detials_error}"
-                    />
 
 
                 <Button

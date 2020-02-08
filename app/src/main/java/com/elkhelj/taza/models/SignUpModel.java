@@ -38,7 +38,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
 
     public SignUpModel() {
         this.name = "";
-        this.national_id = "";
+        this.national_id = "0";
         this.phone = "";
         this.password = "";
         this.confirmpassword = "";

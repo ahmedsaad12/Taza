@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 
 import com.elkhelj.taza.R;
+import com.elkhelj.taza.activities_fragments.activity_edit_profile.Edit_Profile_Activity;
 import com.elkhelj.taza.activities_fragments.activity_home.HomeActivity;
 import com.elkhelj.taza.activities_fragments.activity_my_orders.MyOrdersActivity;
 import com.elkhelj.taza.activities_fragments.activity_notification.NotificationActivity;
@@ -56,13 +57,13 @@ public class Fragment_Profile extends Fragment {
         }
 
         binding.setLang(lang);
-//        binding.llInfo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(activity, Edit_Profile_Activity.class);
-//                startActivity(intent);
-//            }
-//        });
+        binding.llInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, Edit_Profile_Activity.class);
+                startActivity(intent);
+            }
+        });
 //        binding.llfollow.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

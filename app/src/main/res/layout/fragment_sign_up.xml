@@ -30,6 +30,7 @@
         android:scrollbars="none"
         android:clickable="true"
         android:focusable="true"
+        android:background="@drawable/signup"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -71,6 +72,8 @@
                     android:text="@string/back"
                     android:clickable="false"
                     android:longClickable="false"
+                    android:src="@drawable/logo"
+
                     />
             </LinearLayout>
 
@@ -82,6 +85,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="20dp"
+                android:src="@drawable/logo"
                 />
             <LinearLayout
                 android:id="@+id/ll"
@@ -124,7 +128,7 @@
 
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white"
+                        android:background="@color/transparent"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:singleLine="true"
@@ -277,7 +281,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white"
+                        android:background="@color/transparent"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -383,7 +387,7 @@
                         android:id="@+id/edt_shopname"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white"
+                        android:background="@color/transparent"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -423,7 +427,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/white"
+                        android:background="@color/transparent"
                         android:inputType="textEmailAddress"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
@@ -477,7 +481,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="35dp"
                             android:layout_gravity="center_vertical"
-                            android:background="@color/white"
+                            android:background="@color/transparent"
                             android:inputType="textPassword"
                             android:singleLine="true"
                             android:textColor="@color/black"
@@ -530,7 +534,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="35dp"
                             android:layout_gravity="center_vertical"
-                            android:background="@color/white"
+                            android:background="@color/transparent"
                             android:inputType="textPassword"
                             android:singleLine="true"
                             android:textColor="@color/black"

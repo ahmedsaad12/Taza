@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 
 import com.elkhelj.taza.R;
+import com.elkhelj.taza.activities_fragments.activity_add_ads.CompleteOrderActivity;
 import com.elkhelj.taza.adapters.Cart_Adapter;
 import com.elkhelj.taza.databinding.ActivityCartBinding;
 import com.elkhelj.taza.interfaces.Listeners;
@@ -112,6 +113,8 @@ binding.btCom.setOnClickListener(new View.OnClickListener() {
     public void onClick(View v) {
         if(userModel!=null){
           //  checkdata();
+            Intent intent=new Intent(CartActivity.this, CompleteOrderActivity.class);
+            startActivity(intent);
         }
         else {
          //   Common.CreateNoSignAlertDialog(CartActivity.this);
