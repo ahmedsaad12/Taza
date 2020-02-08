@@ -17,6 +17,8 @@ import com.elkhelj.taza.databinding.ActivityTermsBinding;
 import com.elkhelj.taza.interfaces.Listeners;
 import com.elkhelj.taza.language.LanguageHelper;
 import com.elkhelj.taza.models.App_Data_Model;
+import com.elkhelj.taza.models.UserModel;
+import com.elkhelj.taza.preferences.Preferences;
 import com.elkhelj.taza.remote.Api;
 import com.elkhelj.taza.tags.Tags;
 
@@ -33,7 +35,8 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
     private ActivityTermsBinding binding;
     private String lang;
     private String type;
-
+    private Preferences preferences;
+    private UserModel userModel;
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -50,12 +53,15 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
 
 
     private void initView() {
+
         if(getIntent().getStringExtra("type")!=null){
          type=getIntent().getStringExtra("type");
         }
 else {
     binding.btnSend.setVisibility(View.GONE);
         }
+preferences=Preferences.newInstance();
+userModel=preferences.getUserData(this);
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
@@ -127,10 +133,23 @@ updateterms(response.body());
 
     private void updateterms(List<App_Data_Model> body) {
 for(int i=0;i<body.size();i++){
-    if(body.get(i).getType()==Integer.parseInt(type)){
-        binding.setAppdatamodel(body.get(i));
-        break;
+    try {
+        if(body.get(i).getType()==Integer.parseInt(type)){
+            binding.setAppdatamodel(body.get(i));
+            break;
+        }
     }
+   catch (Exception e){
+        if(userModel==null){
+            type="1";
+        }
+        else {
+            if(body.get(i).getType()==Integer.parseInt(userModel.getType())){
+                binding.setAppdatamodel(body.get(i));
+                break;
+            }
+       }
+   }
 }
     }
 

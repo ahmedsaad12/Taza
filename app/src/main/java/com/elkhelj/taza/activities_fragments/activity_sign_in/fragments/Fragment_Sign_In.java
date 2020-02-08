@@ -66,7 +66,19 @@ binding.tvfotgot.setOnClickListener(new View.OnClickListener() {
     }
 });
 
-
+binding.tvNoAccount.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        activity.DisplayFragmentSignInSignup();
+    }
+});
+binding.tvSkip.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent intent=new Intent(activity,HomeActivity.class);
+        startActivity(intent);
+    }
+});
     }
 
 

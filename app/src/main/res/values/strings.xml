@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Taza</string>
+    <string name="app_name">Karam</string>
     <string name="log_in">Log In</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -10,7 +10,7 @@
     <string name="create_an_account">Create a new account</string>
     <string name="user_name">Name</string>
     <string name="phone">Phone Number</string>
-    <string name="create_ne_account">Create Ne Account ?</string>
+    <string name="create_ne_account">Create New Account ?</string>
     <string name="skip">Skip</string>
     <string name="back">Back</string>
     <string name="full_name">Full name</string>
