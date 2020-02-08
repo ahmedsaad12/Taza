@@ -109,7 +109,7 @@ private UserModel userModel;
 
         AHBottomNavigationItem item1 = new AHBottomNavigationItem(getResources().getString(R.string.home), R.drawable.ic_nav_home);
         AHBottomNavigationItem item2 = new AHBottomNavigationItem(getResources().getString(R.string.profile), R.drawable.ic_user);
-        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getResources().getString(R.string.search), R.drawable.ic_nav_notification);
+        AHBottomNavigationItem item3 = new AHBottomNavigationItem(getResources().getString(R.string.search), R.drawable.ic_search);
         AHBottomNavigationItem item4 = new AHBottomNavigationItem(getResources().getString(R.string.subscribe), R.drawable.subscribe);
         AHBottomNavigationItem item5 = new AHBottomNavigationItem(getResources().getString(R.string.more), R.drawable.ic_more);
 
