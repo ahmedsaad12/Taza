@@ -8,11 +8,11 @@
 
         <variable
             name="backListener"
-            type="com.elkhelj.taza.interfaces.Listeners.BackListener"
+            type="com.elkhelj.karam.interfaces.Listeners.BackListener"
             />
         <variable
             name="orderModel"
-            type="com.elkhelj.taza.models.Order_Upload_Model" />
+            type="com.elkhelj.karam.models.Order_Upload_Model" />
         <variable
             name="lang"
             type="String" />

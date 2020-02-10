@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.elkhelj.taza">
+    package="com.elkhelj.karam">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
-        android:name="com.elkhelj.taza.language.App"
+        android:name="com.elkhelj.karam.language.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,79 +27,93 @@
 
 
 
-        <activity
-            android:name="com.elkhelj.taza.activities_fragments.activity_sign_in.activities.SignInActivity"
-            android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
-            android:screenOrientation="portrait"
-
-            />
 
         <activity
-            android:name=".activities_fragments.activity_home.HomeActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_subscribe.SubscribeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_terms.TermsActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_my_order_detials.OrderDetialsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_about.AboutActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_home.HomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_contact.ContactActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_terms.TermsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_product_detials.ProductDetialsActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_about.AboutActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_notification.NotificationActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_contact.ContactActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_my_orders.MyOrdersActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_product_detials.ProductDetialsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_edit_profile.Edit_Profile_Activity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_notification.NotificationActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_add_ads.CompleteOrderActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_my_orders.MyOrdersActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
 
             />
         <activity
-            android:name=".activities_fragments.activity_cart.CartActivity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_edit_profile.Edit_Profile_Activity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name="com.elkhelj.karam.activities_fragments.activity_add_ads.CompleteOrderActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name=".activities_fragments.activity_sign_in.activities.SignInActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
+        <activity
+            android:name="com.elkhelj.karam.activities_fragments.activity_cart.CartActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
@@ -108,7 +122,7 @@
 
 
         <activity
-            android:name=".activities_fragments.activity_splash.Splash_Activity"
+            android:name="com.elkhelj.karam.activities_fragments.activity_splash.Splash_Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"

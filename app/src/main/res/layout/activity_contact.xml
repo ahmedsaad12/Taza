@@ -8,17 +8,17 @@
     <data>
         <variable
             name="backListener"
-            type="com.elkhelj.taza.interfaces.Listeners.BackListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.BackListener"/>
         <variable
             name="lang"
             type="String" />
         <variable
             name="contactUs"
-            type="com.elkhelj.taza.models.ContactUsModel" />
+            type="com.elkhelj.karam.models.ContactUsModel" />
 
         <variable
             name="contactListener"
-            type="com.elkhelj.taza.interfaces.Listeners.ContactListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.ContactListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

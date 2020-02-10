@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "com.elkhelj.taza"
+        applicationId "com.elkhelj.karam"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
@@ -22,6 +22,10 @@ android {
             {
                 enabled = true
             }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
     repositories {
         maven { url "https://jitpack.io" }
 

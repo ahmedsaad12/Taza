@@ -5,7 +5,7 @@
     <data>
         <variable
             name="cityModel"
-            type="com.elkhelj.taza.models.Cities_Model" />
+            type="com.elkhelj.karam.models.Cities_Model" />
         <variable
             name="lang"
             type="String" />

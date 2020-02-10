@@ -8,11 +8,11 @@
     <data>
         <variable
             name="backListener"
-            type="com.elkhelj.taza.interfaces.Listeners.BackListener"
+            type="com.elkhelj.karam.interfaces.Listeners.BackListener"
             />
         <variable
             name="appdatamodel"
-            type="com.elkhelj.taza.models.App_Data_Model" />
+            type="com.elkhelj.karam.models.App_Data_Model" />
         <variable
             name="lang"
             type="String" />

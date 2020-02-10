@@ -11,25 +11,25 @@
 
         <variable
             name="editprofilelistner"
-            type="com.elkhelj.taza.interfaces.Listeners.EditprofileListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.EditprofileListener" />
 
 
 
         <variable
             name="backListener"
-            type="com.elkhelj.taza.interfaces.Listeners.BackListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.BackListener" />
 
         <variable
             name="showDialogListener"
-            type="com.elkhelj.taza.interfaces.Listeners.ShowCountryDialogListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.ShowCountryDialogListener" />
 
         <variable
             name="viewModel"
-            type="com.elkhelj.taza.models.EditprofileModel" />
+            type="com.elkhelj.karam.models.EditprofileModel" />
 
         <variable
             name="usermodel"
-            type="com.elkhelj.taza.models.UserModel" />
+            type="com.elkhelj.karam.models.UserModel" />
 
 
     </data>

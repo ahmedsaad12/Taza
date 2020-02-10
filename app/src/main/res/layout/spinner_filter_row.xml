@@ -5,7 +5,7 @@
     <data>
         <variable
             name="filterModel"
-            type="com.elkhelj.taza.models.Filter_model" />
+            type="com.elkhelj.karam.models.Filter_model" />
         <variable
             name="lang"
             type="String" />

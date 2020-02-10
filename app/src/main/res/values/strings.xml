@@ -29,7 +29,6 @@
     <string name="about_us">About Us</string>
     <string name="log_out">Log Out</string>
     <string name="wait">Wait...</string>
-    <string name="my_orders">My Orders</string>
     <string name="no_order_to_display">No Order to Display</string>
     <string name="no_notification_found">No Notification Found</string>
     <string name="from">From :</string>
@@ -65,5 +64,15 @@
     <string name="more">More</string>
     <string name="cart">cart</string>
     <string name="unsubscribe">unsubscribe</string>
+    <string name="Onging">Onging Order</string>
+    <string name="canceled">Cancelled Order</string>
+    <string name="accept">Accept</string>
+    <string name="cancel">Cancel</string>
+    <string name="my_orders">My Orders</string>
+    <string name="my_sub">My Subscribe</string>
+    <string name="language_setting">Language Setting</string>
+    <string name="change_language">Change Language</string>
+    <string name="catogries">Catogries</string>
+    <string name="most_popular">Most PoPular</string>
 
 </resources>

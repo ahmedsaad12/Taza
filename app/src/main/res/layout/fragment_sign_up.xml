@@ -9,17 +9,17 @@
             type="String" />
         <variable
             name="backListener"
-            type="com.elkhelj.taza.interfaces.Listeners.BackListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.BackListener"/>
         <variable
             name="signUpModel"
-            type="com.elkhelj.taza.models.SignUpModel" />
+            type="com.elkhelj.karam.models.SignUpModel" />
         <variable
             name="signUpListener"
-            type="com.elkhelj.taza.interfaces.Listeners.SignUpListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.SignUpListener" />
 
         <variable
             name="showDialogListener"
-            type="com.elkhelj.taza.interfaces.Listeners.ShowCountryDialogListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.ShowCountryDialogListener" />
 
     </data>
     <ScrollView
@@ -30,7 +30,7 @@
         android:scrollbars="none"
         android:clickable="true"
         android:focusable="true"
-        android:background="@drawable/signup"
+        android:background="@color/white"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -545,9 +545,16 @@
                             />
 
 
+
                     </com.google.android.material.textfield.TextInputLayout>
+
                 </LinearLayout>
-              
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+
+                    android:background="@color/gray5" />
 
 
             </LinearLayout>

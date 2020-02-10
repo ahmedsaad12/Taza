@@ -4,7 +4,7 @@
     <data>
         <variable
             name="model"
-            type="com.elkhelj.taza.models.Product_Model" />
+            type="com.elkhelj.karam.models.Product_Model" />
         <variable
             name="lang"
             type="String" />

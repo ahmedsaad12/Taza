@@ -3,7 +3,7 @@
     <data>
         <variable
             name="model"
-            type="com.elkhelj.taza.models.Orders_Cart_Model" />
+            type="com.elkhelj.karam.models.Orders_Cart_Model" />
         <variable
             name="lang"
             type="String" />

@@ -9,19 +9,19 @@
             type="String" />
        <variable
            name="loginModel"
-           type="com.elkhelj.taza.models.LoginModel" />
+           type="com.elkhelj.karam.models.LoginModel" />
         <variable
             name="loginListener"
-            type="com.elkhelj.taza.interfaces.Listeners.LoginListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.LoginListener" />
         <variable
             name="newAccountListener"
-            type="com.elkhelj.taza.interfaces.Listeners.CreateAccountListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.CreateAccountListener" />
         <variable
             name="skipListener"
-            type="com.elkhelj.taza.interfaces.Listeners.SkipListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.SkipListener" />
         <variable
             name="showDialogListener"
-            type="com.elkhelj.taza.interfaces.Listeners.ShowCountryDialogListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.ShowCountryDialogListener" />
 
 
     </data>
@@ -31,7 +31,8 @@
         android:fillViewport="true"
         android:fitsSystemWindows="true"
         android:scrollbars="none"
-android:background="@drawable/signin"
+        android:background="@color/white"
+
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -101,7 +102,7 @@ android:background="@drawable/signin"
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/black"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     />
@@ -147,7 +148,7 @@ android:background="@drawable/signin"
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:background="@color/colorPrimary"
+                    android:background="@color/black"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     />

@@ -6,7 +6,7 @@
             type="String" />
         <variable
             name="backListener"
-            type="com.elkhelj.taza.interfaces.Listeners.BackListener"
+            type="com.elkhelj.karam.interfaces.Listeners.BackListener"
             />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout

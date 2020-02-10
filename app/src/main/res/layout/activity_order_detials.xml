@@ -14,11 +14,11 @@
         <variable
             name="backListener"
             type="com.elkhelj.karam.interfaces.Listeners.BackListener"
-
 />
+
         <variable
             name="productmodel"
-            type="com.elkhelj.karam.models.Product_Model" />
+            type="com.elkhelj.karam.models.Order_Model" />
 
 
     </data>
@@ -99,7 +99,7 @@
 
                         <ImageView
                             android:id="@+id/pager"
-                           image="@{productmodel.main_image}"
+                           image="@{productmodel.representative_image}"
                             android:scaleType="fitXY"
                             android:src="@drawable/main"
                             android:layout_width="match_parent"
@@ -138,93 +138,17 @@
 
             <TextView
                 android:id="@+id/tv1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text='@{lang.equals("ar")?productmodel.ar_title:productmodel.en_title}'
+                android:text='@{productmodel.name}'
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintEnd_toStartOf="@+id/fr"
                 app:layout_constraintHorizontal_bias="0"
                 />
 
-            <FrameLayout
-                android:id="@+id/fr"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="5dp"
-                    >
-
-                    <FrameLayout
-
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        >
-                        <ImageView
-                            android:id="@+id/image_decrease"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/mins"
-                            android:padding="7dp"
-                            />
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        >
-
-                        <TextView
-                            android:id="@+id/tv_amount"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="17sp"
-                            android:textColor="@color/black"
-                            android:gravity="center"
-                            android:text="1"
-                            />
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginLeft="10dp"
-                        >
-                        <ImageView
-                            android:id="@+id/image_increase"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/add"
-                            android:padding="7dp"
-                            />
-                    </FrameLayout>
-
-                </LinearLayout>
-
-            </FrameLayout>
 
 
 
@@ -233,7 +157,16 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text='@{productmodel.price+"R.Q"}'
+        android:text='@{productmodel.total+""}'
+        android:textColor="@color/black"
+        android:textSize="16sp"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{productmodel.representative_name}"
         android:textColor="@color/black"
         android:textSize="16sp"
 
@@ -241,18 +174,40 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text='@{lang.equals("ar")?productmodel.description:productmodel.description}'
+        android:text="@{productmodel.representative_phone}"
         android:textColor="@color/black"
         android:textSize="16sp"
 
         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{productmodel.address}"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@{productmodel.des}"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+
+        />
+
 </LinearLayout>
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    >
                 <Button
                     android:id="@+id/btnSend"
                     android:layout_width="200dp"
@@ -263,9 +218,25 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
                     android:background="@drawable/btn_sign_up"
                     android:textColor="@color/white"
                     android:textSize="15sp"
-                    android:text="@string/add_to_bage"
+                    android:text="@string/accept"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     />
-
+    <Button
+        android:id="@+id/btncancel"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/btn_cancel"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:text="@string/cancel"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        />
+</LinearLayout>
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
