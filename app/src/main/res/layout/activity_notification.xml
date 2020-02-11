@@ -45,7 +45,7 @@
                     android:clickable="false"
                     android:longClickable="false"
                     android:padding="8dp"
-                    android:rotation='@{lang.equals("ar")?180:0}'
+                    android:rotation='@{lang.equals("en")?180:0}'
                     android:src="@drawable/ic_arrow_right"
                     android:tint="@color/colorPrimary" />
 

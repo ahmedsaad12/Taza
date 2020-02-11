@@ -52,6 +52,7 @@ public class Fragment_More extends Fragment {
         Paper.init(activity);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         userModel = preferences.getUserData(activity);
+        binding.setLang(lang);
 //
         binding.llterms.setOnClickListener(new View.OnClickListener() {
             @Override

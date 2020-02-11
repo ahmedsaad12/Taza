@@ -55,7 +55,7 @@
                     android:padding="18dp"
                     android:src="@drawable/ic_arrow_right"
                     android:tint="@color/black"
-                    android:rotation='@{lang.equals("en")?180:0}'
+                    android:rotation='@{lang.equals("ar")?180:0}'
 
                     />
             </LinearLayout>
