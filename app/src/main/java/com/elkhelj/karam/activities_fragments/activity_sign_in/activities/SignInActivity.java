@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentManager;
 
 import com.elkhelj.karam.activities_fragments.activity_sign_in.fragments.Fragment_Forgetpass;
 import com.elkhelj.karam.activities_fragments.activity_sign_in.fragments.Fragment_Newpass;
+import com.elkhelj.karam.activities_fragments.activity_sign_in.fragments.Fragment_SignUpCompany;
+import com.elkhelj.karam.activities_fragments.activity_sign_in.fragments.Fragment_SignUpRepres;
 import com.elkhelj.karam.models.UserModel;
 import com.elkhelj.karam.R;
 import com.elkhelj.karam.activities_fragments.activity_sign_in.fragments.Fragment_SignUp;
@@ -34,6 +36,8 @@ public class SignInActivity extends AppCompatActivity {
     private Preferences preferences;
     private Fragment_Forgetpass fragment_forgetpass;
     private Fragment_Newpass fragment_newpass;
+    private Fragment_SignUpCompany fragment_sign_up_company;
+    private Fragment_SignUpRepres fragment_sign_up_repress;
 
 
     @Override
@@ -74,6 +78,24 @@ public class SignInActivity extends AppCompatActivity {
             fragmentManager.beginTransaction().show(fragment_sign_up).commit();
         } else {
             fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container, fragment_sign_up, "fragment_sign_up").addToBackStack("fragment_sign_up").commit();
+        }
+    }
+    public void DisplayFragmentSignInSignupCompany() {
+        fragment_count += 1;
+        fragment_sign_up_company = Fragment_SignUpCompany.newInstance();
+        if (fragment_sign_up_company.isAdded()) {
+            fragmentManager.beginTransaction().show(fragment_sign_up_company).commit();
+        } else {
+            fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container, fragment_sign_up_company, "fragment_sign_up_company").addToBackStack("fragment_sign_up_company").commit();
+        }
+    }
+    public void DisplayFragmentSignInSignupRepre() {
+        fragment_count += 1;
+        fragment_sign_up_repress = Fragment_SignUpRepres.newInstance();
+        if (fragment_sign_up_repress.isAdded()) {
+            fragmentManager.beginTransaction().show(fragment_sign_up_repress).commit();
+        } else {
+            fragmentManager.beginTransaction().add(R.id.fragment_sign_in_container, fragment_sign_up_repress, "fragment_sign_up_repress").addToBackStack("fragment_sign_up_repress").commit();
         }
     }
     public void DisplayFragmentSignIn() {

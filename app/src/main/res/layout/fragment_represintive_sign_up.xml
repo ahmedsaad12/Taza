@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -12,10 +12,10 @@
             type="com.elkhelj.karam.interfaces.Listeners.BackListener"/>
         <variable
             name="signUpModel"
-            type="com.elkhelj.karam.models.SignUpModel" />
+            type="com.elkhelj.karam.models.SignUpRepresModel" />
         <variable
             name="signUpListener"
-            type="com.elkhelj.karam.interfaces.Listeners.SignUpListener" />
+            type="com.elkhelj.karam.interfaces.Listeners.SignUReprepreListener" />
 
         <variable
             name="showDialogListener"
@@ -333,119 +333,81 @@
                     android:background="@color/gray5" />
 
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingLeft="10dp"-->
-<!--                    android:paddingRight="10dp"-->
-<!--                    android:text="@string/register_as"-->
-<!--                    -->
-<!--                    android:textColor="@color/gray5"-->
-<!--                    android:textSize="15sp" />-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
+                <!--                <TextView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:gravity="center_vertical"-->
+                <!--                    android:paddingLeft="10dp"-->
+                <!--                    android:paddingRight="10dp"-->
+                <!--                    android:text="@string/register_as"-->
+                <!--                    -->
+                <!--                    android:textColor="@color/gray5"-->
+                <!--                    android:textSize="15sp" />-->
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
 
-<!--                    android:padding="2dp">-->
+                <!--                    android:padding="2dp">-->
 
-<!--                    <Spinner-->
-<!--                        android:id="@+id/sp_type"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_gravity="center"-->
+                <!--                    <Spinner-->
+                <!--                        android:id="@+id/sp_type"-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_gravity="center"-->
 
-<!--                        >-->
+                <!--                        >-->
 
-<!--                    </Spinner>-->
-<!--                </LinearLayout>-->
+                <!--                    </Spinner>-->
+                <!--                </LinearLayout>-->
 
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
+                <!--                <View-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="1dp"-->
 
-<!--                    android:background="@color/gray5" />-->
+                <!--                    android:background="@color/gray5" />-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingLeft="10dp"-->
-<!--                    android:paddingRight="10dp"-->
-<!--                    android:text="@string/national_id"-->
-<!--                    android:textColor="@color/gray5"-->
-<!--                    android:textSize="15sp" />-->
 
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="35dp"-->
 
-<!--                    android:orientation="horizontal"-->
-<!--                    android:paddingBottom="5dp"-->
-<!--                    android:weightSum="1">-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/nationel_id"
+                    android:textColor="@color/gray5"
+                    android:textSize="15sp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
 
-<!--                    <EditText-->
-<!--                        android:id="@+id/edt_shopname"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:background="@color/transparent"-->
-<!--                        android:inputType="textEmailAddress"-->
-<!--                        android:paddingLeft="8dp"-->
-<!--                        android:paddingRight="8dp"-->
-<!--                        android:singleLine="true"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textColorHint="@color/gray4"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:text="@={signUpModel.shop_name}"-->
-<!--                        error="@{signUpModel.error_shop_name}"-->
-<!--                        />-->
+                    android:orientation="horizontal"
+                    android:paddingBottom="5dp"
+                    android:weightSum="1">
 
-<!--                </LinearLayout>-->
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/transparent"
+                        android:inputType="textEmailAddress"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/gray4"
+                        android:textSize="14sp"
+                        android:text="@={signUpModel.national_id}"
+                        error="@{signUpModel.error_nationa}"
 
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1px"-->
+                        />
 
-<!--                    android:background="@color/gray4" />-->
+                </LinearLayout>
 
-<!--                <TextView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:gravity="center_vertical"-->
-<!--                    android:paddingLeft="10dp"-->
-<!--                    android:paddingRight="10dp"-->
-<!--                    android:text="@string/nationel_id"-->
-<!--                    android:textColor="@color/gray5"-->
-<!--                    android:textSize="15sp" />-->
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="35dp"-->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
 
-<!--                    android:orientation="horizontal"-->
-<!--                    android:paddingBottom="5dp"-->
-<!--                    android:weightSum="1">-->
-
-<!--                    <EditText-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="match_parent"-->
-<!--                        android:background="@color/transparent"-->
-<!--                        android:inputType="textEmailAddress"-->
-<!--                        android:paddingLeft="8dp"-->
-<!--                        android:paddingRight="8dp"-->
-<!--                        android:singleLine="true"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textColorHint="@color/gray4"-->
-<!--                        android:textSize="14sp"-->
-<!--                        android:text="@={signUpModel.national_id}"-->
-<!--                        />-->
-
-<!--                </LinearLayout>-->
-
-<!--                <View-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="1dp"-->
-
-<!--                    android:background="@color/gray5" />-->
+                    android:background="@color/gray5" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -556,8 +518,42 @@
                     android:layout_height="1dp"
 
                     android:background="@color/gray5" />
-
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/national_image"
+                    android:textColor="@color/gray5"
+                    android:textSize="15sp" />
+                <FrameLayout
+                    android:id="@+id/fl1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/image1"
+                        android:layout_width="match_parent"
+                        android:layout_height="130dp"
+                        app:riv_border_width="0dp"
+                        android:background="@color/white"
+                        android:clickable="false"
+                        android:longClickable="false"
+                        app:riv_border_color="@color/black"
+                        />
+                    <ImageView
+                        android:id="@+id/icon1"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_upload"
+                        android:padding="5dp"
+                        android:clickable="false"
+                        android:longClickable="false"
+                        android:tint="@color/black"
+                        />
+                </FrameLayout>
             </LinearLayout>
 
 
@@ -578,7 +574,7 @@
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:text="@string/signup"
-                android:onClick="@{()->signUpListener.checkDataSignUp(signUpModel.name,signUpModel.phone,signUpModel.email,signUpModel.password,signUpModel.confirmpassword)}"
+                android:onClick="@{()->signUpListener.checkDataSignUp(signUpModel.name,signUpModel.phone,signUpModel.email,signUpModel.password,signUpModel.confirmpassword,signUpModel.national_id)}"
                 />
 
 

@@ -1,6 +1,8 @@
 package com.elkhelj.karam.activities_fragments.activity_sign_in.fragments;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.elkhelj.karam.activities_fragments.activity_sign_in.activities.SignInActivity;
+import com.elkhelj.karam.databinding.DialogChooseBinding;
 import com.elkhelj.karam.models.LoginModel;
 import com.elkhelj.karam.models.UserModel;
 import com.elkhelj.karam.remote.Api;
@@ -79,6 +83,52 @@ binding.tvSkip.setOnClickListener(new View.OnClickListener() {
         startActivity(intent);
     }
 });
+    }
+    public static void CreateNoSignAlertDialog(Context context) {
+        final AlertDialog dialog = new AlertDialog.Builder(context)
+                .create();
+        AppCompatActivity activity = (AppCompatActivity) context;
+        DialogChooseBinding binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.dialog_choose, null, false);
+
+       binding.tvMsg1.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               dialog.dismiss();
+
+               if (activity instanceof SignInActivity) {
+                   SignInActivity homeActivity = (SignInActivity) activity;
+                   homeActivity.DisplayFragmentSignInSignup();
+               }
+              // activity.
+           }
+       });
+        binding.tvMsg3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+                if (activity instanceof SignInActivity) {
+                    SignInActivity homeActivity = (SignInActivity) activity;
+                    homeActivity.DisplayFragmentSignInSignupRepre();
+                }
+                // activity.
+            }
+        });
+        binding.tvMsg2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+
+                if (activity instanceof SignInActivity) {
+                    SignInActivity homeActivity = (SignInActivity) activity;
+                    homeActivity.DisplayFragmentSignInSignupCompany();
+                }
+                // activity.
+            }
+        });
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setView(binding.getRoot());
+        dialog.show();
     }
 
 

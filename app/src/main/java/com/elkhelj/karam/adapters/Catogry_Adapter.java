@@ -2,6 +2,7 @@ package com.elkhelj.karam.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.elkhelj.karam.R;
+import com.elkhelj.karam.activities_fragments.activity_home.HomeActivity;
 import com.elkhelj.karam.databinding.CatogryRowBinding;
 import com.elkhelj.karam.models.Catogries_Model;
 
@@ -26,14 +28,14 @@ public class Catogry_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private LayoutInflater inflater;
     private String lang;
     int index = -1;
-
+private HomeActivity activity;
     public Catogry_Adapter(List<Catogries_Model> orderModelList, Context context, Fragment fragment) {
         this.orderModelList = orderModelList;
         this.context = context;
         inflater = LayoutInflater.from(context);
         Paper.init(context);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-
+activity=(HomeActivity)context;
     }
 
     @NonNull
@@ -54,7 +56,12 @@ public class Catogry_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         {
         EventHolder eventHolder = (EventHolder) holder;
         eventHolder.binding.setAdmodel(order_orderModel);
-
+eventHolder.itemView.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        activity.showdetialss(orderModelList.get(eventHolder.getLayoutPosition()).getId());
+    }
+});
         }
     }
 

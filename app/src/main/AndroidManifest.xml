@@ -35,6 +35,14 @@
             android:screenOrientation="portrait"
 
             />
+
+        <activity
+            android:name="com.elkhelj.karam.activities_fragments.activity_showall_products.AllProductActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:screenOrientation="portrait"
+
+            />
         <activity
             android:name="com.elkhelj.karam.activities_fragments.activity_my_order_detials.OrderDetialsActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"

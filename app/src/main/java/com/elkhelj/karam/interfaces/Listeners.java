@@ -40,11 +40,30 @@ public interface Listeners {
 
     interface SignUpListener
     {
-        void checkDataSignUp(String name, String phone_code, String phone, String email, String password, String confirmpassword,String shop_name);
+        void checkDataSignUp(String name,  String phone, String email, String password, String confirmpassword);
+
 
     }
 
 
+    interface SignUpreListener
+    {
+        void checkDataSignUp(String name,  String phone, String email, String password, String confirmpassword,String Nationa);
+
+
+    }
+    interface SignUCompanypreListener
+    {
+        void checkDataSignUp(String name,  String phone, String email, String password, String confirmpassword,String Nationa,String Shopname);
+
+
+    }
+    interface SignUReprepreListener
+    {
+        void checkDataSignUp(String name,  String phone, String email, String password, String confirmpassword,String Nation);
+
+
+    }
     interface RatingListener
     {
         void checkDataRating(String desc);

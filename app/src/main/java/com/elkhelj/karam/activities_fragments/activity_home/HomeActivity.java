@@ -24,6 +24,7 @@ import com.elkhelj.karam.activities_fragments.activity_home.fragments.Fragment_P
 import com.elkhelj.karam.activities_fragments.activity_home.fragments.Fragment_Search;
 import com.elkhelj.karam.activities_fragments.activity_home.fragments.Fragment_Subscrabtions;
 import com.elkhelj.karam.activities_fragments.activity_product_detials.ProductDetialsActivity;
+import com.elkhelj.karam.activities_fragments.activity_showall_products.AllProductActivity;
 import com.elkhelj.karam.activities_fragments.activity_sign_in.activities.SignInActivity;
 import com.elkhelj.karam.models.UserModel;
 import com.elkhelj.karam.remote.Api;
@@ -447,6 +448,12 @@ private UserModel userModel;
 
     }
 
+    public void showdetialss(int id) {
+        Intent intent=new Intent(HomeActivity.this, AllProductActivity.class);
+        intent.putExtra("search",id);
+        startActivity(intent);
+
+    }
 
 
 
