@@ -452,7 +452,7 @@ public class Fragment_SignUpRepres extends Fragment implements Listeners.SignURe
             RequestBody phonr_part = Common.getRequestBodyText(signUpModel.getPhone());
             RequestBody phone_code_part = Common.getRequestBodyText("00962");
             RequestBody city_part = Common.getRequestBodyText(signUpModel.getCity_id()+"");
-            RequestBody type_part = Common.getRequestBodyText("3");
+            RequestBody type_part = Common.getRequestBodyText("2");
             RequestBody nation_part = Common.getRequestBodyText(signUpModel.getNational_id());
             RequestBody pass_part = Common.getRequestBodyText(signUpModel.getPassword());
             RequestBody email_part = Common.getRequestBodyText(signUpModel.getType_id());
