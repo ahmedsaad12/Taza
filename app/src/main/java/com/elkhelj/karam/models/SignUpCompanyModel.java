@@ -31,7 +31,7 @@ public class SignUpCompanyModel extends BaseObservable implements Serializable {
     public ObservableField<String> error_phone = new ObservableField<>();
     public ObservableField<String> error_email = new ObservableField<>();
     public ObservableField<String> error_shop_name = new ObservableField<>();
-    public ObservableField<String> error_nationa; = new ObservableField<>();
+    public ObservableField<String> error_nationa= new ObservableField<>();
 
     public ObservableField<String> error_password = new ObservableField<>();
     public ObservableField<String> error_confirm_password = new ObservableField<>();

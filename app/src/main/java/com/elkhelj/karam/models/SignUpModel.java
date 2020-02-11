@@ -175,9 +175,7 @@ public class SignUpModel extends BaseObservable implements Serializable {
                 error_confirm_password.set(null);
             }
 
-            if (type_id.isEmpty()) {
-                Toast.makeText(context, context.getString(R.string.user_type), Toast.LENGTH_SHORT).show();
-            }
+
 
             if (city_id.isEmpty())
             {
