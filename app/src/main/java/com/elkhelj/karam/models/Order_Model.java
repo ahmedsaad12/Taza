@@ -18,6 +18,7 @@ public class Order_Model implements Serializable {
     private String representative_name;
     private String representative_phone;
     private String representative_image;
+    private String representative_for;
 
     public int getId() {
         return id;
@@ -65,5 +66,9 @@ public class Order_Model implements Serializable {
 
     public String getRepresentative_image() {
         return representative_image;
+    }
+
+    public String getRepresentative_for() {
+        return representative_for;
     }
 }
