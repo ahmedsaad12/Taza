@@ -77,7 +77,7 @@ public class Fragment_SignUpCompany extends Fragment implements Listeners.SignUC
     private List<Filter_model> filter_models;
     private FilterAdapter filterAdapter;
     private Filter_model filter_model1,filter_model2,filter_model3;
-    private int gender;
+    private int gender=3;
     private CityAdapter adapter;
     private List<Cities_Model> dataList;
     private String city_id = "";

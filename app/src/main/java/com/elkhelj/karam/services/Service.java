@@ -42,7 +42,9 @@ public interface Service {
 
                            @Field("type") String type,
                            @Field("city") String city,
-                           @Field("is_agree") String is_agree
+                           @Field("is_agree") String is_agree,
+                           @Field("notion_id") String notion_id
+
 
     );
 

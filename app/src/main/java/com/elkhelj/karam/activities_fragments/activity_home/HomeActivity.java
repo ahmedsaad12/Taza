@@ -60,7 +60,7 @@ private UserModel userModel;
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
-        super.attachBaseContext(LanguageHelper.updateResources(newBase, Paper.book().read("lang", Locale.getDefault().getLanguage())));
+        super.attachBaseContext(LanguageHelper.updateResources(newBase,LanguageHelper.getLanguage(newBase)));
 
     }
 
@@ -381,6 +381,7 @@ private UserModel userModel;
 
     private void refreshActivity(String lang) {
         preferences.create_update_language(this, lang);
+
         Paper.book().write("lang", lang);
         LanguageHelper.setNewLocale(this, lang);
         Intent intent = getIntent();

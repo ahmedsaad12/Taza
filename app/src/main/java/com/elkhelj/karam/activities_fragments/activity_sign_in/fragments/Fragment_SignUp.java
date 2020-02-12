@@ -59,10 +59,10 @@ public class Fragment_SignUp extends Fragment implements Listeners.SignUpListene
     private List<Filter_model> filter_models;
     private FilterAdapter filterAdapter;
     private Filter_model filter_model1,filter_model2,filter_model3;
-    private int gender;
+    private int gender=1;
     private CityAdapter adapter;
     private List<Cities_Model> dataList;
-    private String city_id = "";
+    private String city_id = "1";
 
     public static Fragment_SignUp newInstance() {
         return new Fragment_SignUp();
@@ -320,7 +320,7 @@ public class Fragment_SignUp extends Fragment implements Listeners.SignUpListene
             dialog.setCancelable(false);
             dialog.show();
             Api.getService(Tags.base_url)
-                    .signUp(signUpModel.getName(), signUpModel.getEmail(), signUpModel.getPassword(), signUpModel.getPhone(), "00962", "1",signUpModel.getCity_id(),"1")
+                    .signUp(signUpModel.getName(), signUpModel.getEmail(), signUpModel.getPassword(), signUpModel.getPhone(), "00962", "1",signUpModel.getCity_id(),"1","0")
                     .enqueue(new Callback<UserModel>() {
                         @Override
                         public void onResponse(Call<UserModel> call, Response<UserModel> response) {
@@ -333,6 +333,13 @@ public class Fragment_SignUp extends Fragment implements Listeners.SignUpListene
                                 startActivity(intent);
                                 activity.finish();
                             } else {
+                                try {
+
+                                    Log.e("errordddd", response.code() + "_" + response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+
                                 if (response.code() == 422) {
                                    // Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
                                     try {

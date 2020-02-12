@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.elkhelj.karam.R;
 
+import com.elkhelj.karam.activities_fragments.activity_product_detials.ProductDetialsActivity;
 import com.elkhelj.karam.adapters.Products_Adapter;
 import com.elkhelj.karam.databinding.ActivityMarketsBinding;
 import com.elkhelj.karam.interfaces.Listeners;
@@ -50,7 +51,7 @@ public class AllProductActivity extends AppCompatActivity implements Listeners.B
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
-        super.attachBaseContext(LanguageHelper.updateResources(newBase, Paper.book().read("lang", Locale.getDefault().getLanguage())));
+        super.attachBaseContext(LanguageHelper.updateResources(newBase,LanguageHelper.getLanguage(newBase)));
 
     }
 
@@ -159,7 +160,13 @@ binding.setBackListener(this);
 
     }
 
+    public void showdetials(int id) {
+        Intent intent=new Intent(this, ProductDetialsActivity.class);
+        intent.putExtra("productid",id+"");
+        startActivity(intent);
 
+
+    }
 
 
 

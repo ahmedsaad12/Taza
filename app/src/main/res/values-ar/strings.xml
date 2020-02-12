@@ -75,10 +75,10 @@
     <string name="change_language">تغير اللغه</string>
     <string name="catogries">الاقسام</string>
     <string name="most_popular">الاكثر شهره</string>
-    <string name="user">User</string>
-    <string name="super_visor">Super Visor</string>
-    <string name="representative">representative</string>
-    <string name="national_image">National Image</string>
+    <string name="user">مستخدم</string>
+    <string name="super_visor">مقدم خدمه</string>
+    <string name="representative">مندوب</string>
+    <string name="national_image">صورة الرقم القومى</string>
 
     <string name="upload_picture">إرفع صورة</string>
     <string name="select_a_picture_to_upload">إختر صورة لرفعها</string>
@@ -86,6 +86,7 @@
     <string name="gallery">البوم صور</string>
     <string name="perm_image_denied">الوصول لصور غير مسموح</string>
     <string name="done">تم</string>
-    <string name="dont_choose">Dont Choose Image From Google Drive</string>
-    <string name="products">Products</string>
+    <string name="dont_choose">لا تختار ضوره من جوجل درايف</string>
+    <string name="products">منتجات</string>
+    <string name="representative_number">رقم المندوب : </string>
 </resources>

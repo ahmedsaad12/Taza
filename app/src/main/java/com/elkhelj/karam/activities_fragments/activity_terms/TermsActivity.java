@@ -39,7 +39,7 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
-        super.attachBaseContext(LanguageHelper.updateResources(newBase, Paper.book().read("lang", Locale.getDefault().getLanguage())));
+        super.attachBaseContext(LanguageHelper.updateResources(newBase,LanguageHelper.getLanguage(newBase)));
     }
 
     @Override
@@ -55,6 +55,7 @@ public class TermsActivity extends AppCompatActivity implements Listeners.BackLi
 
         if(getIntent().getStringExtra("type")!=null){
          type=getIntent().getStringExtra("type");
+         Log.e("lll",type);
         }
 else {
     binding.btnSend.setVisibility(View.GONE);

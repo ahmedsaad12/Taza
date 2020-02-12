@@ -73,7 +73,7 @@ binding.tvfotgot.setOnClickListener(new View.OnClickListener() {
 binding.tvNoAccount.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        activity.DisplayFragmentSignInSignup();
+        CreateNoSignAlertDialog(activity);
     }
 });
 binding.tvSkip.setOnClickListener(new View.OnClickListener() {

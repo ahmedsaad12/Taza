@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.elkhelj.karam.activities_fragments.activity_home.HomeActivity;
+import com.elkhelj.karam.activities_fragments.activity_showall_products.AllProductActivity;
 import com.elkhelj.karam.models.Product_Model;
 import com.elkhelj.karam.R;
 import com.elkhelj.karam.databinding.ProductsRowBinding;
@@ -27,13 +28,13 @@ public class Products_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private String lang;
     private int i = 0;
     private HomeActivity activity;
+    private AllProductActivity allProductActivity;
     public Products_Adapter(List<Product_Model> orderlist, Context context) {
         this.orderlist = orderlist;
         this.context = context;
         inflater = LayoutInflater.from(context);
         Paper.init(context);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
-this.activity=(HomeActivity)context;
     }
 
     @NonNull
@@ -56,7 +57,15 @@ eventHolder.binding.setLang(lang);
 eventHolder.itemView.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        activity.showdetials(orderlist.get(eventHolder.getLayoutPosition()).getId());
+        if(context instanceof  HomeActivity){
+            activity=(HomeActivity)context;
+            activity.showdetials(orderlist.get(eventHolder.getLayoutPosition()).getId());
+
+        }
+        else if(context instanceof  AllProductActivity ){
+            allProductActivity=(AllProductActivity)context;
+            allProductActivity.showdetials(orderlist.get(eventHolder.getLayoutPosition()).getId());
+        }
     }
 });
     }
