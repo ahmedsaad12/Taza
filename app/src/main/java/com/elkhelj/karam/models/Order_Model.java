@@ -14,11 +14,20 @@ public class Order_Model implements Serializable {
                  private String status;
                  private String user_id;
                  private String representative_id;
-
+private double latitude;
+    private double longitude;
     private String representative_name;
     private String representative_phone;
     private String representative_image;
     private String representative_for;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
 
     public int getId() {
         return id;

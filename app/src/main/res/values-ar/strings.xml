@@ -89,4 +89,6 @@
     <string name="dont_choose">لا تختار ضوره من جوجل درايف</string>
     <string name="products">منتجات</string>
     <string name="representative_number">رقم المندوب : </string>
+    <string name="map_api_key">AIzaSyAXoUD_tMUiyg0u_KApBbsFnl5h_kk6yAE</string>
+    <string name="if_you_look">if you look</string>
 </resources>

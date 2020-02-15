@@ -459,7 +459,7 @@ public class Fragment_SignUpRepres extends Fragment implements Listeners.SignURe
             RequestBody isagree_part = Common.getRequestBodyText("1");
             MultipartBody.Part image_part = null;
             try {
-   image_part= Common.getMultiPart(activity, imgUri1, "national_image");
+   image_part= Common.getMultiPart(activity, imgUri1, "id_image");
 
 }
 catch (Exception e){

@@ -22,6 +22,13 @@ import com.elkhelj.karam.databinding.ActivityOrderDetialsBinding;
 import com.elkhelj.karam.interfaces.Listeners;
 import com.elkhelj.karam.language.LanguageHelper;
 import com.elkhelj.karam.preferences.Preferences;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -32,7 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class OrderDetialsActivity extends AppCompatActivity implements Listeners.BackListener {
+public class OrderDetialsActivity extends AppCompatActivity implements Listeners.BackListener, OnMapReadyCallback {
     private ActivityOrderDetialsBinding binding;
 
     private Preferences preferences;
@@ -42,6 +49,10 @@ public class OrderDetialsActivity extends AppCompatActivity implements Listeners
 private int amount=1;
 private int totalamount;
     private Order_Model product_model;
+private boolean stop = false;
+private float zoom = 15.6f;
+private Marker marker;
+private GoogleMap mMap;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -55,6 +66,7 @@ private int totalamount;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_order_detials);
+        updateUI();
         getdatafromintent();
         initView();
        // setdata();
@@ -69,7 +81,36 @@ private int totalamount;
         }
     }
 
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        if (googleMap != null) {
+            mMap = googleMap;
+//    mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(activity, R.raw.maps));
+            mMap.setTrafficEnabled(false);
+            mMap.setBuildingsEnabled(false);
+            mMap.setIndoorEnabled(true);
 
+        }
+    }
+
+    private void updateUI() {
+
+        SupportMapFragment fragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        fragment.getMapAsync(this);
+
+    }
+
+    private void AddMarker(double lat, double lang) {
+
+        if (marker == null) {
+
+            marker = mMap.addMarker(new MarkerOptions().position(new LatLng(lat, lang)));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lang), zoom));
+        } else {
+            marker.setPosition(new LatLng(lat, lang));
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lat, lang), zoom));
+        }
+    }
 
     @SuppressLint("RestrictedApi")
     private void initView() {
@@ -77,7 +118,9 @@ private int totalamount;
         userModel = preferences.getUserData(this);
         binding.toolbar.setTitle("");
         if(product_model!=null){
-binding.setProductmodel(product_model);}
+binding.setProductmodel(product_model);
+        AddMarker(product_model.getLatitude(),product_model.getLongitude());
+        }
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);

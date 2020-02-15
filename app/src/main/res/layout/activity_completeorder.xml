@@ -119,8 +119,31 @@
                     android:text="@={orderModel.address}"
 
                     />
+                <EditText
+                    android:id="@+id/edtAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edt_bg"
+                    android:hint="@string/address"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/gray4"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp"
+                    android:imeOptions="actionSearch"
+                    android:singleLine="true"
 
+                    />
 
+                <fragment
+                    android:id="@+id/map"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="15dp"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    />
 
 
                 <Button

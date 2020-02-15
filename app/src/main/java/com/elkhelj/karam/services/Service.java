@@ -6,6 +6,8 @@ import com.elkhelj.karam.models.Catogries_Model;
 import com.elkhelj.karam.models.Cities_Model;
 import com.elkhelj.karam.models.NotificationDataModel;
 import com.elkhelj.karam.models.Order_Model;
+import com.elkhelj.karam.models.PlaceGeocodeData;
+import com.elkhelj.karam.models.PlaceMapDetailsData;
 import com.elkhelj.karam.models.Product_Model;
 import com.elkhelj.karam.models.UserModel;
 
@@ -22,6 +24,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Query;
 
 public interface Service {
 
@@ -184,7 +187,14 @@ public interface Service {
 
     @POST("api/add_order")
     Call<ResponseBody> accept_orders(@Body Add_Order_Model add_order_model);
+    @FormUrlEncoded
+    @POST("api/add_oute_order")
+    Call<ResponseBody> accept_orders(@Field("name") String name,
+                                @Field("des") String des,
 
+                                @Field("amount") String amount,
+                                @Field("user_id") int user_id
+    );
     @FormUrlEncoded
     @POST("api/update_profile")
     Call<UserModel> editprofile(@Field("name") String name,
@@ -206,4 +216,15 @@ public interface Service {
     @POST("api/canRest")
     Call<UserModel> forget(@Field("kayWord") String kayWord
     );
+    @GET("place/findplacefromtext/json")
+    Call<PlaceMapDetailsData> searchOnMap(@Query(value = "inputtype") String inputtype,
+                                          @Query(value = "input") String input,
+                                          @Query(value = "fields") String fields,
+                                          @Query(value = "language") String language,
+                                          @Query(value = "key") String key
+    );
+    @GET("geocode/json")
+    Call<PlaceGeocodeData> getGeoData(@Query(value = "latlng") String latlng,
+                                      @Query(value = "language") String language,
+                                      @Query(value = "key") String key);
 }
