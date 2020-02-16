@@ -1,4 +1,4 @@
-package com.elkhelj.karam.activities_fragments.activity_product_detials;
+package com.elkhelj.karam.activities_fragments.activity_add_unkowon;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
@@ -16,6 +16,7 @@ import androidx.databinding.DataBindingUtil;
 import com.elkhelj.karam.R;
 import com.elkhelj.karam.activities_fragments.activity_add_ads.CompleteOrderActivity;
 import com.elkhelj.karam.activities_fragments.activity_my_orders.MyOrdersActivity;
+import com.elkhelj.karam.activities_fragments.activity_sign_in.activities.SignInActivity;
 import com.elkhelj.karam.databinding.ActivityAddUnkonwnBinding;
 import com.elkhelj.karam.databinding.ActivityProductDetialsBinding;
 import com.elkhelj.karam.interfaces.Listeners;
@@ -109,17 +110,23 @@ private int totalamount;
 
 
             //    addtocart();
-                checkdata();
+                if(userModel!=null){
+                checkdata();}
+                else {
+                    Intent intent=new Intent(AddUnkownActivity.this, SignInActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
 
             }
         });
     }
     private void accept_order(String name,String desc) {
-
+Log.e("lllll",userModel.getId()+"");
         final ProgressDialog dialog = Common.createProgressDialog(this, getString(R.string.wait));
         dialog.setCancelable(false);
         dialog.show();
-        Api.getService(Tags.base_url).accept_orders(name,desc,amount+"",userModel.getUser_id()).enqueue(new Callback<ResponseBody>() {
+        Api.getService(Tags.base_url).accept_orders(name,desc,amount+"",userModel.getId()).enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
 

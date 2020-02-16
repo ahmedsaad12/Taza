@@ -457,7 +457,7 @@ public class Fragment_SignUpCompany extends Fragment implements Listeners.SignUC
             RequestBody nation_part = Common.getRequestBodyText(signUpModel.getNational_id());
             RequestBody shop_part = Common.getRequestBodyText(signUpModel.getShop_name());
             RequestBody pass_part = Common.getRequestBodyText(signUpModel.getPassword());
-            RequestBody email_part = Common.getRequestBodyText(signUpModel.getType_id());
+            RequestBody email_part = Common.getRequestBodyText(signUpModel.getEmail());
             RequestBody isagree_part = Common.getRequestBodyText("1");
             MultipartBody.Part image_part = null;
             try {
@@ -482,6 +482,13 @@ catch (Exception e){
                                 startActivity(intent);
                                 activity.finish();
                             } else {
+
+                                try {
+
+                                    Log.e("error", response.code() + "_" + response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
                                 if (response.code() == 422) {
                                    // Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
                                     try {

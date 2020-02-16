@@ -149,7 +149,7 @@ public class CompleteOrderActivity extends AppCompatActivity implements Listener
         lat = location.getLatitude();
         lang = location.getLongitude();
         getGeoData(lat, lang);
-        //AddMarker(lat, lang);
+        AddMarker(lat, lang);
 
         if (googleApiClient != null) {
             googleApiClient.disconnect();
@@ -267,19 +267,22 @@ public class CompleteOrderActivity extends AppCompatActivity implements Listener
 
         // image_pin.setVisibility(View.GONE);
         //progBar.setVisibility(View.VISIBLE);
+        final ProgressDialog dialog = Common.createProgressDialog(this, getString(R.string.wait));
+        dialog.setCancelable(false);
+        dialog.show();
         String fields = "id,place_id,name,geometry,formatted_address";
         Api.getService("https://maps.googleapis.com/maps/api/")
                 .searchOnMap("textquery", query, fields, current_lang, getString(R.string.map_api_key))
                 .enqueue(new Callback<PlaceMapDetailsData>() {
                     @Override
                     public void onResponse(Call<PlaceMapDetailsData> call, Response<PlaceMapDetailsData> response) {
+                        dialog.dismiss();
                         if (response.isSuccessful() && response.body() != null) {
 
                             /*image_pin.setVisibility(View.VISIBLE);
                             progBar.setVisibility(View.GONE);
 */
                             //    Fragment_Add_Order_To_Cart.placeMapDetailsData = response.body();
-
                             if (response.body().getCandidates().size() > 0) {
 
                                 formated_address = response.body().getCandidates().get(0).getFormatted_address().replace("Unnamed Road,", "");
@@ -291,7 +294,7 @@ public class CompleteOrderActivity extends AppCompatActivity implements Listener
 
 
                             try {
-                                Log.e("error_code", response.code() + response.errorBody().string());
+                                Log.e("error_codess", response.code() + response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -303,9 +306,9 @@ public class CompleteOrderActivity extends AppCompatActivity implements Listener
                     @Override
                     public void onFailure(Call<PlaceMapDetailsData> call, Throwable t) {
                         try {
+dialog.dismiss();
 
-
-                            Log.e("Error", t.getMessage());
+                            Log.e("Errorss", t.getMessage());
                         } catch (Exception e) {
 
                         }
@@ -333,10 +336,10 @@ public class CompleteOrderActivity extends AppCompatActivity implements Listener
                                 //   Log.e("kkk", formatedaddress);
                             }
                         } else {
-                            Log.e("error_code", response.errorBody() + " " + response.code());
+                            Log.e("error_codess", response.errorBody() + " " + response.code());
 
                             try {
-                                Log.e("error_code", response.errorBody().string());
+                                Log.e("error_codess", response.errorBody().string());
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -348,6 +351,7 @@ public class CompleteOrderActivity extends AppCompatActivity implements Listener
                     @Override
                     public void onFailure(Call<PlaceGeocodeData> call, Throwable t) {
                         try {
+                            Log.e("error_codess", t.getMessage());
 
 
                             // Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_LONG).show();

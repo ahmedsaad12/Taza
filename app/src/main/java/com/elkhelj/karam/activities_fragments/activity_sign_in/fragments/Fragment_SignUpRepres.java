@@ -455,7 +455,7 @@ public class Fragment_SignUpRepres extends Fragment implements Listeners.SignURe
             RequestBody type_part = Common.getRequestBodyText("2");
             RequestBody nation_part = Common.getRequestBodyText(signUpModel.getNational_id());
             RequestBody pass_part = Common.getRequestBodyText(signUpModel.getPassword());
-            RequestBody email_part = Common.getRequestBodyText(signUpModel.getType_id());
+            RequestBody email_part = Common.getRequestBodyText(signUpModel.getEmail());
             RequestBody isagree_part = Common.getRequestBodyText("1");
             MultipartBody.Part image_part = null;
             try {
@@ -514,7 +514,7 @@ catch (Exception e){
                             try {
                                 dialog.dismiss();
                                 if (t.getMessage() != null) {
-                                    Log.e("error", t.getMessage());
+                                    Log.e("error", t.getMessage()+" "+t.getCause().toString());
                                     if (t.getMessage().toLowerCase().contains("failed to connect") || t.getMessage().toLowerCase().contains("unable to resolve host")) {
                                   //      Toast.makeText(activity, R.string.something, Toast.LENGTH_SHORT).show();
                                     } else {

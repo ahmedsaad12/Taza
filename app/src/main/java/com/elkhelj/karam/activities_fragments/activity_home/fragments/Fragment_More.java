@@ -13,7 +13,9 @@ import androidx.fragment.app.Fragment;
 
 
 import com.elkhelj.karam.activities_fragments.activity_about.AboutActivity;
+import com.elkhelj.karam.activities_fragments.activity_add_unkowon.AddUnkownActivity;
 import com.elkhelj.karam.activities_fragments.activity_contact.ContactActivity;
+import com.elkhelj.karam.activities_fragments.activity_sign_in.activities.SignInActivity;
 import com.elkhelj.karam.models.UserModel;
 import com.elkhelj.karam.R;
 import com.elkhelj.karam.activities_fragments.activity_home.HomeActivity;
@@ -54,6 +56,14 @@ public class Fragment_More extends Fragment {
         userModel = preferences.getUserData(activity);
         binding.setLang(lang);
 //
+
+        binding.llorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(activity, AddUnkownActivity.class);
+                startActivity(intent);
+            }
+        });
         binding.llterms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +96,9 @@ public class Fragment_More extends Fragment {
 
                     activity.logout();
                 } else {
+                    Intent intent=new Intent(activity, SignInActivity.class);
+                    startActivity(intent);
+                    activity.finish();
                     // Common.CreateNoSignAlertDialog(activity);
                 }
             }

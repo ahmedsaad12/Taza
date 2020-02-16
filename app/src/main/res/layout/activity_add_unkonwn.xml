@@ -100,22 +100,6 @@
                         android:src="@drawable/logo"
                         />
                 </LinearLayout>
-                <EditText
-                    android:id="@+id/edtAdname"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:singleLine="true"
-                    android:background="@drawable/edt_bg"
-                    android:layout_marginTop="8dp"
-                    android:textColorHint="@color/gray4"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:hint="@string/product_name"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp"
-
-
-                    />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -229,6 +213,22 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:id="@+id/edtAdname"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:singleLine="true"
+        android:background="@drawable/edt_bg"
+        android:layout_marginTop="8dp"
+        android:textColorHint="@color/gray4"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:hint="@string/product_name"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+
+
+        />
 
     <EditText
         android:id="@+id/edtdes"
@@ -240,10 +240,10 @@
         android:textColorHint="@color/gray4"
         android:textColor="@color/black"
         android:textSize="13sp"
-        android:hint="@string/product_name"
+        android:hint="@string/detials"
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
-        android:paddingTop="8dp"
+        android:paddingTop="10dp"
         android:gravity="top"
 
 

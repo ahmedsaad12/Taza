@@ -133,7 +133,7 @@
 
             />
         <activity
-            android:name=".activities_fragments.activity_product_detials.AddUnkownActivity"
+            android:name=".activities_fragments.activity_add_unkowon.AddUnkownActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
             android:screenOrientation="portrait"
