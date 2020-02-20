@@ -138,12 +138,8 @@ private UserModel userModel;
 
                         break;
                     case 2:
-                        if (userModel != null) {
                           displayFragmentSearch();
-                        } else {
-                            // Common.CreateNoSignAlertDialog(this);
 
-                        }
                         break;
                     case 3:
                       displayFragmentSubscrabtions();

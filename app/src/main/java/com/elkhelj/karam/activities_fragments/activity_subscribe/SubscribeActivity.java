@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.elkhelj.karam.databinding.ActivitySubscribeBinding;
 import com.elkhelj.karam.interfaces.Listeners;
 import com.elkhelj.karam.models.Product_Model;
 import com.elkhelj.karam.models.UserModel;
@@ -37,7 +38,7 @@ import retrofit2.Response;
 
 public class SubscribeActivity extends AppCompatActivity implements Listeners.BackListener {
 
-    private ActivityNotificationBinding binding;
+    private ActivitySubscribeBinding binding;
     private LinearLayoutManager manager;
     private List<Product_Model> product_models;
     private SubScribe_Adapter subScribe_adapter;
@@ -53,7 +54,7 @@ public class SubscribeActivity extends AppCompatActivity implements Listeners.Ba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_notification);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_subscribe);
         initView();
     }
 

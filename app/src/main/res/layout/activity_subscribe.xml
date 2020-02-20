@@ -90,7 +90,7 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:text="@string/no_notification_found"
+                android:text="@string/no_product_to_display"
                 android:visibility="gone"
                 />
         </FrameLayout>
