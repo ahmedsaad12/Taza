@@ -63,7 +63,7 @@
                     android:layout_marginEnd="5dp"
                     android:clickable="false"
                     android:longClickable="false"
-                    android:text="back"
+                    android:text="@string/back"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
             </LinearLayout>

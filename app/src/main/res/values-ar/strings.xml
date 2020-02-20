@@ -62,7 +62,7 @@
     <string name="send">ارسال</string>
     <string name="signup">تسجبل الدخول</string>
     <string name="skip">تخطى</string>
-    <string name="subscribe">مشاركه</string>
+    <string name="subscribe">اشتراك</string>
     <string name="suc">تم الاضافه الى السله بنجاح</string>
     <string name="terms_conditions">الشروط والاحكام</string>
     <string name="total">المجموع</string>
@@ -90,6 +90,8 @@
     <string name="products">منتجات</string>
     <string name="representative_number">رقم المندوب : </string>
     <string name="map_api_key">AIzaSyD8vqW-npiyqulaBvEnoUsuhgA_gbZ5zew</string>
-    <string name="if_you_look">if you look</string>
-    <string name="special_order">Special Order</string>
+    <string name="if_you_look">إذا كنت تبحث عن منتج ولم تجده !!! ، دون ، ر تقلق ترسل لنا تفاصيل المنتجات ونحن نطلق عليه لك.</string>
+    <string name="special_order">طلب خاص</string>
+    <string name="search"> بحث</string>
+
 </resources>

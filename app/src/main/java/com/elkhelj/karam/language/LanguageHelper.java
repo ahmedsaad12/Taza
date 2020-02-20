@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import java.util.Locale;
 
@@ -15,7 +16,7 @@ public class LanguageHelper {
 
 
         public static void setNewLocale(Context c, String language) {
-            persistLanguage(c, language);
+            create_update_language(c, language);
             updateResources(c, language);
         }
 
@@ -41,18 +42,20 @@ public class LanguageHelper {
 
         }
 
-        public static String getLanguage(Context c) {
+    public static void create_update_language(Context context, String lang) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("language", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("lang", lang);
+        editor.apply();
 
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
-            return sharedPreferences.getString("lang", "ar");
-        }
-        private static void persistLanguage(Context c, String language) {
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("lang",language);
-            editor.apply();
-        }
 
+    }
+
+    public static String getLanguage(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("language", Context.MODE_PRIVATE);
+        return preferences.getString("lang", "ar");
+
+    }
 
 
 }

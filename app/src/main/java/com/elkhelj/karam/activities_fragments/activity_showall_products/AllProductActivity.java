@@ -63,7 +63,7 @@ public class AllProductActivity extends AppCompatActivity implements Listeners.B
         getdatafromintent();
 
         initView();
-
+getAds();
     }
     private void getAds() {
         advesriment_data_list.clear();
@@ -153,7 +153,7 @@ binding.progBar.setVisibility(View.GONE);
         binding.recMarket.setDrawingCacheEnabled(true);
 //       binding.progBar.setVisibility(View.GONE);
         binding.llNoStore.setVisibility(View.GONE);
-
+binding.recMarket.setLayoutManager(new GridLayoutManager(this,2));
         binding.recMarket.setAdapter(ads_adapter);
 binding.setLang(lang);
 binding.setBackListener(this);

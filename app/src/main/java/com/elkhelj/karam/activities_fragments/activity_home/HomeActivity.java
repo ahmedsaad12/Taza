@@ -35,6 +35,7 @@ import com.elkhelj.karam.databinding.ActivityHomeBinding;
 import com.elkhelj.karam.databinding.DialogLanguageBinding;
 import com.elkhelj.karam.language.LanguageHelper;
 import com.elkhelj.karam.preferences.Preferences;
+import com.esotericsoftware.minlog.Log;
 
 
 import java.util.Locale;
@@ -60,6 +61,7 @@ private UserModel userModel;
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
+
         super.attachBaseContext(LanguageHelper.updateResources(newBase,LanguageHelper.getLanguage(newBase)));
 
     }

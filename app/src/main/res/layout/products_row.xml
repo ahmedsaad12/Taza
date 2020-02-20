@@ -33,15 +33,17 @@
 
             <TextView
                 android:id="@+id/tv_price"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
-                android:text='@{productsmodel.price+""}'
 
-                android:textColor="@color/gray4"
-                android:textSize="14sp" />
+                android:text='@{productsmodel.price+""}'
+android:background="@drawable/linear_bg_oran"
+                android:layout_gravity="end"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:padding="5dp"
+                />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
