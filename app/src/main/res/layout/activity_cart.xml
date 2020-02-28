@@ -115,6 +115,8 @@ android:visibility="gone"
         android:paddingEnd="10dp"
         android:textColor="@color/black"
         android:gravity="center"
+        android:visibility="gone"
+
         />
 
     <Button

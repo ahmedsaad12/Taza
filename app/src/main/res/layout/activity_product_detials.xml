@@ -236,6 +236,7 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
         android:text='@{productmodel.price+"R.Q"}'
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:visibility="gone"
 
         />
     <TextView
@@ -244,6 +245,7 @@ app:layout_constraintEnd_toStartOf="@+id/fr"
         android:text='@{lang.equals("ar")?productmodel.description:productmodel.description}'
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:visibility="gone"
 
         />
 </LinearLayout>

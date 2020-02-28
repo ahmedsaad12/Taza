@@ -88,6 +88,7 @@
                 app:layout_constraintEnd_toStartOf="@id/tv4"
                 app:layout_constraintStart_toEndOf="@id/im1"
                 app:layout_constraintTop_toBottomOf="@id/tvboquename"
+                android:visibility="gone"
 
                 />
 
@@ -97,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/amount"
                 android:textColor="@color/gray4"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tvquantity"
                 app:layout_constraintStart_toEndOf="@id/tv3"
                 app:layout_constraintTop_toTopOf="@id/tv3" />
 
@@ -115,6 +116,8 @@
                 app:layout_constraintStart_toEndOf="@id/im1"
                 app:layout_constraintTop_toBottomOf="@id/tv3"
                 android:text='@{model.total+""}'
+                android:visibility="gone"
+
                 />
 
             <TextView
@@ -124,8 +127,8 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvprice"
-                app:layout_constraintTop_toTopOf="@id/tvprice"
+                app:layout_constraintStart_toEndOf="@id/tv4"
+                app:layout_constraintTop_toTopOf="@id/tv4"
                 android:text='@{model.amount+""}'
                 />
 

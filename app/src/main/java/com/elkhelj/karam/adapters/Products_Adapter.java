@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.elkhelj.karam.activities_fragments.activity_add_unkowon.AddUnkownActivity;
 import com.elkhelj.karam.activities_fragments.activity_home.HomeActivity;
 import com.elkhelj.karam.activities_fragments.activity_showall_products.AllProductActivity;
 import com.elkhelj.karam.models.Product_Model;
@@ -29,6 +30,7 @@ public class Products_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private int i = 0;
     private HomeActivity activity;
     private AllProductActivity allProductActivity;
+    private AddUnkownActivity addUnkownActivity;
     public Products_Adapter(List<Product_Model> orderlist, Context context) {
         this.orderlist = orderlist;
         this.context = context;
@@ -65,6 +67,10 @@ eventHolder.itemView.setOnClickListener(new View.OnClickListener() {
         else if(context instanceof  AllProductActivity ){
             allProductActivity=(AllProductActivity)context;
             allProductActivity.showdetials(orderlist.get(eventHolder.getLayoutPosition()).getId());
+        }
+        else if(context instanceof  AddUnkownActivity ){
+            addUnkownActivity=(AddUnkownActivity) context;
+            addUnkownActivity.showdetials(orderlist.get(eventHolder.getLayoutPosition()).getId());
         }
     }
 });

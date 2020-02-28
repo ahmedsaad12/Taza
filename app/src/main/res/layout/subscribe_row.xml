@@ -99,7 +99,7 @@ android:text='@{@string/amount(model.amount)}'
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:gravity="start"
-
+android:visibility="gone"
         />
     <TextView
         android:layout_width="match_parent"
@@ -112,6 +112,7 @@ android:text='@{@string/amount(model.amount)}'
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:gravity="start"
+        android:visibility="gone"
 
         />
 </LinearLayout>

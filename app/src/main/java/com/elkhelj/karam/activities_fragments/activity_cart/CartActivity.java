@@ -62,7 +62,9 @@ getorders();
             order_details.clear();
             order_details.addAll(preferences.getUserOrder(this));
             cart_adapter.notifyDataSetChanged();
-        gettotal();
+            binding.tvTotal.setVisibility(View.GONE);
+
+            gettotal();
         }
         else {
             binding.llNoStore.setVisibility(View.VISIBLE);
@@ -83,6 +85,8 @@ getorders();
 
 
         binding.tvTotal.setText(getResources().getString(R.string.total)+totalcost+"");
+        binding.tvTotal.setVisibility(View.GONE);
+
     }
 
     @SuppressLint("RestrictedApi")

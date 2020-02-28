@@ -7,16 +7,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.elkhelj.karam.R;
 import com.elkhelj.karam.activities_fragments.activity_add_ads.CompleteOrderActivity;
+import com.elkhelj.karam.activities_fragments.activity_home.HomeActivity;
+import com.elkhelj.karam.activities_fragments.activity_home.fragments.Fragment_Search;
 import com.elkhelj.karam.activities_fragments.activity_my_orders.MyOrdersActivity;
+import com.elkhelj.karam.activities_fragments.activity_product_detials.ProductDetialsActivity;
 import com.elkhelj.karam.activities_fragments.activity_sign_in.activities.SignInActivity;
+import com.elkhelj.karam.adapters.Products_Adapter;
 import com.elkhelj.karam.databinding.ActivityAddUnkonwnBinding;
 import com.elkhelj.karam.databinding.ActivityProductDetialsBinding;
 import com.elkhelj.karam.interfaces.Listeners;
@@ -45,13 +53,13 @@ public class AddUnkownActivity extends AppCompatActivity implements Listeners.Ba
     private ActivityAddUnkonwnBinding binding;
 
     private Preferences preferences;
+    private GridLayoutManager manager;
     private UserModel userModel;
+
+    private Products_Adapter ads_adapter;
+    private List<Product_Model> advesriment_data_list;
+    private String query;
     private String lang;
-    private int NUM_PAGES,current_page=0;
-private String product_id;
-private int amount=1;
-private int totalamount;
-    private Product_Model product_model;
 
     @Override
     protected void attachBaseContext(Context newBase) {
@@ -75,117 +83,109 @@ private int totalamount;
 
 
 
-    @SuppressLint("RestrictedApi")
     private void initView() {
-        preferences = Preferences.newInstance();
-        userModel = preferences.getUserData(this);
-        binding.toolbar.setTitle("");
+        advesriment_data_list = new ArrayList<>();
 
         Paper.init(this);
         lang = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(lang);
+        preferences = Preferences.newInstance();
+        userModel = preferences.getUserData(this);
         binding.setBackListener(this);
-        binding.imageDecrease.setOnClickListener(new View.OnClickListener() {
+        manager = new GridLayoutManager(this,2);
+        ads_adapter = new Products_Adapter(advesriment_data_list, this);
+        binding.recView.setItemViewCacheSize(25);
+        binding.recView.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
+        binding.recView.setDrawingCacheEnabled(true);
+//       binding.progBar.setVisibility(View.GONE);
+        binding.llNoStore.setVisibility(View.GONE);
+        binding.recView.setLayoutManager(manager);
+        binding.recView.setAdapter(ads_adapter);
+        binding.edtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public void onClick(View v) {
-                if(amount>1){
-                    binding.tvAmount.setText((amount-1)+"");
-                    amount-=1;
-                }
-
-            }
-        });
-        binding.imageIncrease.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                if(amount<totalamount){
-                binding.tvAmount.setText((amount+1)+"");
-                amount+=1;
-//            }
-            }
-        });
-        binding.btnSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-            //    addtocart();
-                if(userModel!=null){
-                checkdata();}
-                else {
-                    Intent intent=new Intent(AddUnkownActivity.this, SignInActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-
-            }
-        });
-    }
-    private void accept_order(String name,String desc) {
-Log.e("lllll",userModel.getId()+"");
-        final ProgressDialog dialog = Common.createProgressDialog(this, getString(R.string.wait));
-        dialog.setCancelable(false);
-        dialog.show();
-        Api.getService(Tags.base_url).accept_orders(name,desc,amount+"",userModel.getId()).enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-
-                dialog.dismiss();
-                if (response.isSuccessful()) {
-                    // Common.CreateSignAlertDialog(activity, getResources().getString(R.string.sucess));
-
-                    //  activity.refresh(Send_Data.getType());
-                    finish();
-                } else {
-                    //  Common.CreateDialogAlert(CartActivity.this, getString(R.string.failed));
-                    Log.e("Error_code", response.code() + "_" + response.message());
-
-                    try {
-                        Log.e("Error_code", response.code() + "_" + response.errorBody().string());
-                    } catch (IOException e) {
-                        e.printStackTrace();
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    query = binding.edtSearch.getText().toString();
+                    if (!TextUtils.isEmpty(query)) {
+                        Common.CloseKeyBoard(AddUnkownActivity.this, binding.edtSearch);
+                  getAds(query);
+                        return false;
+                    } else {
+                        binding.edtSearch.setError(getResources().getString(R.string.field_req));
+                        return false;
                     }
                 }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
-                try {
-                    dialog.dismiss();
-                    //    Toast.makeText(CompleteOrderActivity.this, getString(R.string.something), Toast.LENGTH_SHORT).show();
-                    Log.e("Error", t.getMessage());
-                } catch (Exception e) {
-                }
+                return false;
             }
         });
     }
 
-    private void checkdata() {
-        String name=binding.edtAdname.getText().toString();
-        String desc=binding.edtdes.getText().toString();
-        if(!TextUtils.isEmpty(name)&&!TextUtils.isEmpty(desc)){
-            binding.edtAdname.setError(null);
-            binding.edtdes.setError(null);
-accept_order(name,desc);
-        }
-        else {
-            if(TextUtils.isEmpty(name)){
-                binding.edtAdname.setError(getResources().getString(R.string.field_req));
-            }
-            else {
-                binding.edtAdname.setError(null);
+    private void getAds(String query) {
+        advesriment_data_list.clear();
+        ads_adapter.notifyDataSetChanged();
+        binding.progBar.setVisibility(View.VISIBLE);
 
-            }
-            if(TextUtils.isEmpty(desc)){
-                binding.edtdes.setError(getResources().getString(R.string.field_req));
-            }
-            else {
-                binding.edtdes.setError(null);
+        try {
 
-            }
+
+            Api.getService(Tags.base_url)
+                    .getAds(query)
+                    .enqueue(new Callback<List<Product_Model>>() {
+                        @Override
+                        public void onResponse(Call<List<Product_Model>> call, Response<List<Product_Model>> response) {
+                            binding.progBar.setVisibility(View.GONE);
+                            if (response.isSuccessful() && response.body() != null) {
+                                Log.e("Error_code", response.code() + "_" + response.body().toString());
+
+                                advesriment_data_list.clear();
+                                advesriment_data_list.addAll(response.body());
+                                if (response.body().size() > 0) {
+                                    // rec_sent.setVisibility(View.VISIBLE);
+                                    //  Log.e("data",response.body().getData().get(0).getAr_title());
+
+                                    binding.llNoStore.setVisibility(View.GONE);
+                                    ads_adapter.notifyDataSetChanged();
+                                    //   total_page = response.body().getMeta().getLast_page();
+
+                                } else {
+                                    ads_adapter.notifyDataSetChanged();
+
+                                    binding.llNoStore.setVisibility(View.VISIBLE);
+
+                                }
+                            } else {
+                                ads_adapter.notifyDataSetChanged();
+
+                                binding.llNoStore.setVisibility(View.VISIBLE);
+
+                                //Toast.makeText(activity, getString(R.string.failed), Toast.LENGTH_SHORT).show();
+                                try {
+                                    Log.e("Error_code", response.code() + "_" + response.errorBody().string());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Product_Model>> call, Throwable t) {
+                            try {
+                                binding.progBar.setVisibility(View.GONE);
+                                binding.llNoStore.setVisibility(View.VISIBLE);
+
+
+                                //     Toast.makeText(activity, getString(R.string.something), Toast.LENGTH_SHORT).show();
+                                Log.e("error", t.getMessage());
+                            } catch (Exception e) {
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            binding.progBar.setVisibility(View.GONE);
+            binding.llNoStore.setVisibility(View.VISIBLE);
+
         }
     }
-
 
     @Override
     public void back() {
@@ -193,5 +193,9 @@ accept_order(name,desc);
     }
 
 
-
+    public void showdetials(int id) {
+        Intent intent=new Intent(this, ProductDetialsActivity.class);
+        intent.putExtra("productid",id+"");
+        startActivity(intent);
+    }
 }
