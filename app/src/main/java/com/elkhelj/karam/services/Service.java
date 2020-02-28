@@ -204,6 +204,10 @@ public interface Service {
                                 @Field("city") String city,
                                 @Field("user_id") int user_id
     );
+    @Multipart
+    @POST("api/user_image")
+    Call<UserModel> editUserImage(@Part("user_id") RequestBody user_id,
+                                  @Part MultipartBody.Part image);
 
     @FormUrlEncoded
     @POST("api/update_profile")
