@@ -6,7 +6,7 @@ public class UserModel implements Serializable {
 
     private int id;
     private String type;
-    private int user_id;
+    private String user_id;
 
     private String name;
     private String phone_code;
@@ -75,7 +75,7 @@ public class UserModel implements Serializable {
         return type;
     }
 
-    public int getUser_id() {
+    public String getUser_id() {
         return user_id;
     }
 
@@ -106,6 +106,7 @@ public class UserModel implements Serializable {
     public String getLogo() {
         return logo;
     }
+
 
     public String getImage() {
         return image;

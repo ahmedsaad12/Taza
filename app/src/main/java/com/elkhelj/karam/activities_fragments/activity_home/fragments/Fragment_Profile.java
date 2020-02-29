@@ -312,7 +312,7 @@ try {
                         if (response.isSuccessful() && response.body() != null) {
                             //listener.onSuccess(response.body());
 
-                            Toast.makeText(activity, getString(R.string.suc), Toast.LENGTH_SHORT).show();
+                          //  Toast.makeText(activity, getString(R.string.suc), Toast.LENGTH_SHORT).show();
                             updatedata(response.body());
 
 
@@ -345,8 +345,9 @@ catch (Exception e){
     }
 
     private void updatedata(UserModel body) {
+        Log.e("jjjjj",body.getImage());
         preferences.create_update_userdata(activity,body);
-        this.userModel=userModel;
+        this.userModel=body;
         binding.setUsermodel(userModel);
     }
 

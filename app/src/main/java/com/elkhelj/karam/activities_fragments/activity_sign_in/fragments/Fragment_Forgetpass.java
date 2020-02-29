@@ -95,7 +95,8 @@ public class Fragment_Forgetpass extends Fragment implements Listeners.ShowCount
                             if (response.isSuccessful()) {
                                 //  Log.e("data",response.body().getPassword_token());
                             //    CreateAlertDialog(response.body());
-activity.displayFragmentNewpass(response.body());
+                                if(response.body().getUser_id()!=null){
+activity.displayFragmentNewpass(response.body());}
                             } else {
                                 try {
 

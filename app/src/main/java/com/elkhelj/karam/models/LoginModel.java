@@ -61,11 +61,10 @@ public class LoginModel extends BaseObservable {
 
 
     public boolean isDataValid(Context context) {
-        if (
+        if ( !TextUtils.isEmpty(password)&&
                 (password.length() >= 6) &&
-                ((!TextUtils.isEmpty(email) &&
-                        Patterns.EMAIL_ADDRESS.matcher(email).matches()) ||! TextUtils.isEmpty(email))
-        ) {
+                ! TextUtils.isEmpty(email))
+         {
 
             error_email.set(null);
             error_password.set(null);
@@ -73,15 +72,16 @@ public class LoginModel extends BaseObservable {
         } else {
 
 
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                error_email.set(context.getString(R.string.inve));
-            } else {
+
+
+
+
+            if (email.isEmpty()) {
+                error_email.set(context.getString(R.string.field_req));
+            }   else {
                 error_email.set(null);
 
             }
-
-
-
 
 
             if (password.isEmpty()) {

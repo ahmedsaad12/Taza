@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.databinding.BindingAdapter;
 
+import com.elkhelj.karam.R;
 import com.elkhelj.karam.tags.Tags;
 import com.iarcuschin.simpleratingbar.SimpleRatingBar;
 import com.makeramen.roundedimageview.RoundedImageView;
@@ -41,25 +42,24 @@ public class GeneralMethod {
     @BindingAdapter("image")
     public static void displayImage(View view,String endPoint)
     {
-        if (endPoint!=null&&!endPoint.isEmpty())
-        {
+
             if (view instanceof CircleImageView)
             {
                 CircleImageView circleImageView = (CircleImageView) view;
 
-                Picasso.with(view.getContext()).load(Uri.parse(Tags.IMAGE_URL)+endPoint).fit().into(circleImageView);
+                Picasso.with(view.getContext()).load(Uri.parse(Tags.IMAGE_URL)+endPoint).placeholder(R.drawable.logo).fit().into(circleImageView);
             }else if (view instanceof RoundedImageView)
             {
                 RoundedImageView roundedImageView = (RoundedImageView) view;
-                Picasso.with(view.getContext()).load(Uri.parse(Tags.IMAGE_URL)+endPoint).fit().into(roundedImageView);
+                Picasso.with(view.getContext()).load(Uri.parse(Tags.IMAGE_URL)+endPoint).placeholder(R.drawable.ic_user).fit().into(roundedImageView);
 
             }else if (view instanceof ImageView)
             {
                 ImageView imageView = (ImageView) view;
-                Picasso.with(view.getContext()).load(Uri.parse(Tags.IMAGE_URL)+endPoint).fit().into(imageView);
+                Picasso.with(view.getContext()).load(Uri.parse(Tags.IMAGE_URL)+endPoint).placeholder(R.drawable.ic_user).fit().into(imageView);
 
             }
-        }
+
     }
 
 

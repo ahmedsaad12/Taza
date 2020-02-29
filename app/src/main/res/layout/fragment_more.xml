@@ -39,7 +39,7 @@
                     android:gravity="start|center"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:text="@string/special_order"
+                    android:text="@string/search"
                     android:textSize="15sp"
                     android:textColor="@color/black"
                     android:clickable="false"

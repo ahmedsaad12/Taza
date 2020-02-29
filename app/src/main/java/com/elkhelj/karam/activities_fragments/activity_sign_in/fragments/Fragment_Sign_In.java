@@ -143,7 +143,9 @@ binding.tvSkip.setOnClickListener(new View.OnClickListener() {
 
 
        if (loginModel.isDataValid(activity)){
-
+if(email.startsWith("0")){
+    email=email.replaceFirst("0","");
+}
             loginModel.setEmail(email);
        loginModel.setPassword(password);
             binding.setLoginModel(loginModel);
