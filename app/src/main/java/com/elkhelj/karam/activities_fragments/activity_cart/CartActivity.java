@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.elkhelj.karam.activities_fragments.activity_add_ads.CompleteOrderActivity;
 import com.elkhelj.karam.R;
+import com.elkhelj.karam.activities_fragments.activity_sign_in.activities.SignInActivity;
 import com.elkhelj.karam.adapters.Cart_Adapter;
 import com.elkhelj.karam.databinding.ActivityCartBinding;
 import com.elkhelj.karam.interfaces.Listeners;
@@ -105,13 +106,16 @@ cart_adapter=new Cart_Adapter(order_details,this);
 binding.btCom.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
-        if(userModel!=null){
+        if(userModel!=null&&userModel.getType().equals("1")){
           //  checkdata();
             Intent intent=new Intent(CartActivity.this, CompleteOrderActivity.class);
             startActivity(intent);
         }
         else {
          //   Common.CreateNoSignAlertDialog(CartActivity.this);
+            Intent intent=new Intent(CartActivity.this, SignInActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 });
